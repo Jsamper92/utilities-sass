@@ -1,0 +1,253 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Frontech-library - v1.0.0</title><link rel="stylesheet" href="assets/css/main.css"><link href="https://fonts.googleapis.com/css?family=Open+Sans:400,500,700" rel="stylesheet" type="text/css"><meta name="viewport" content="width=device-width"><meta content="IE=edge, chrome=1" http-equiv="X-UA-Compatible"><!-- Open Graph tags --><meta property="og:title" content="Frontech-library - SassDoc"><meta property="og:type" content="website"><meta property="og:description" content="<p>Libreria de utilidades sass </p>
+"><!-- Thanks to Sass-lang.com for the icons --><link href="https://www.everis.com/sites/all/themes/everis/logo.png" rel="shortcut icon"></head><body><aside class="sidebar" role="nav"><div class="sidebar__header"><h1 class="sidebar__title">Frontech-library - 1.0.0</h1></div><div class="sidebar__body"><button type="button" class="btn-toggle js-btn-toggle" data-alt="Open all">Close all</button><p class="sidebar__item sidebar__item--heading" data-slug="fonts"><a href="#fonts">fonts</a></p><div><p class="sidebar__item sidebar__item--sub-heading" data-slug="fonts-mixin"><a href="#fonts-mixin">mixins</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-group="fonts" data-name="font-face" data-type="mixin"><a href="#fonts-mixin-font-face">font-face</a></li></ul></div><p class="sidebar__item sidebar__item--heading" data-slug="functions"><a href="#functions">functions</a></p><div><p class="sidebar__item sidebar__item--sub-heading" data-slug="functions-function"><a href="#functions-function">functions</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-group="functions" data-name="str-replace" data-type="function"><a href="#functions-function-str-replace">str-replace</a></li></ul></div><p class="sidebar__item sidebar__item--heading" data-slug="grid"><a href="#grid">grid</a></p><div><p class="sidebar__item sidebar__item--sub-heading" data-slug="grid-variable"><a href="#grid-variable">variables</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-group="grid" data-name="breakpoints" data-type="variable"><a href="#grid-variable-breakpoints">breakpoints</a></li></ul><p class="sidebar__item sidebar__item--sub-heading" data-slug="grid-mixin"><a href="#grid-mixin">mixins</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-group="grid" data-name="get-grid" data-type="mixin"><a href="#grid-mixin-get-grid">get-grid</a></li></ul></div><p class="sidebar__item sidebar__item--heading" data-slug="media-queries"><a href="#media-queries">media-queries</a></p><div><p class="sidebar__item sidebar__item--sub-heading" data-slug="media-queries-mixin"><a href="#media-queries-mixin">mixins</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-group="media-queries" data-name="screen-sm" data-type="mixin"><a href="#media-queries-mixin-screen-sm">screen-sm</a></li><li class="sidebar__item sassdoc__item" data-group="media-queries" data-name="screen-md" data-type="mixin"><a href="#media-queries-mixin-screen-md">screen-md</a></li><li class="sidebar__item sassdoc__item" data-group="media-queries" data-name="screen-lg" data-type="mixin"><a href="#media-queries-mixin-screen-lg">screen-lg</a></li><li class="sidebar__item sassdoc__item" data-group="media-queries" data-name="screen-xlg" data-type="mixin"><a href="#media-queries-mixin-screen-xlg">screen-xlg</a></li></ul></div><p class="sidebar__item sidebar__item--heading" data-slug="spacing"><a href="#spacing">spacing</a></p><div><p class="sidebar__item sidebar__item--sub-heading" data-slug="spacing-variable"><a href="#spacing-variable">variables</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-group="spacing" data-name="spacing" data-type="variable"><a href="#spacing-variable-spacing">spacing</a></li><li class="sidebar__item sassdoc__item" data-group="spacing" data-name="types" data-type="variable"><a href="#spacing-variable-types">types</a></li></ul><p class="sidebar__item sidebar__item--sub-heading" data-slug="spacing-mixin"><a href="#spacing-mixin">mixins</a></p><ul class="list-unstyled"><li class="sidebar__item sassdoc__item" data-group="spacing" data-name="get-utilities-spacing" data-type="mixin"><a href="#spacing-mixin-get-utilities-spacing">get-utilities-spacing</a></li></ul></div></div></aside><article class="main" role="main"><header class="header" role="banner"><div class="container"><div class="sassdoc__searchbar searchbar"><label for="js-search-input" class="visually-hidden">Search</label><div class="searchbar__form" id="js-search"><input name="search" type="search" class="searchbar__field" autocomplete="off" autofocus id="js-search-input" placeholder="Search"><ul class="searchbar__suggestions" id="js-search-suggestions"></ul></div></div></div></header><section class="main__section"><div class="container"><h3 id="frontech-library">FRONTECH LIBRARY</h3><p>Frontech Library tiene como objetivo aportar una serie de utilidades comunes al inicio de cualquier proyecto front asi como determinados mixin que faciliten el desarrollo del dia a dia como puede ser clases de margin,padding,grid, animaciones base y elementos comunes. Para más información revisa la documentación en la ruta <code>Frontech Guidelines/index.html</code>.</p><p>Para el correcto funcionamiento de la libreria es preciso crear un archivo de configuración en el proyecto llamado <code>.frontech.json</code>, el cual determinara las utilidades de margin, padding y grid custom. Dicha configuración debe mantener la siguiente estructura:</p><pre><code>{
+  &quot;grid&quot;: {
+    &quot;sm&quot;: {
+      &quot;gutter&quot;: &quot;30px&quot;,
+      &quot;offset&quot;: &quot;50px&quot;,
+      &quot;columns&quot;: 4,
+      &quot;width&quot;: &quot;360px&quot;
+    },
+    &quot;md&quot;: {
+      &quot;gutter&quot;: &quot;30px&quot;,
+      &quot;offset&quot;: &quot;50px&quot;,
+      &quot;columns&quot;: 6,
+      &quot;width&quot;: &quot;768px&quot;
+    },
+    &quot;lg&quot;: {
+      &quot;gutter&quot;: &quot;30px&quot;,
+      &quot;offset&quot;: &quot;50px&quot;,
+      &quot;columns&quot;: 12,
+      &quot;width&quot;: &quot;1440px&quot;
+    },
+    &quot;xlg&quot;: {
+      &quot;gutter&quot;: &quot;30px&quot;,
+      &quot;offset&quot;: &quot;50px&quot;,
+      &quot;columns&quot;: 12,
+      &quot;width&quot;: &quot;1920px&quot;
+    }
+  },
+  &quot;spacing&quot;: {
+    &quot;increase&quot;: 5,
+    &quot;limit&quot;: 20
+  }
+}</code></pre><p>Para la posible utilización de la libreria simplemente será necesario importar en tu hoja de estilos sass el siguiente archivo:</p><p><code>@use &#39;~frontech-library/sass/abstracts.scss&#39;;</code></p></div></section><section class="main__section"><h1 class="main__heading" id="fonts"><div class="container">fonts</div></h1><section class="main__sub-section" id="fonts-mixin"><h2 class="main__heading--secondary"><div class="container">mixins</div></h2><section class="main__item container item" id="fonts-mixin-font-face"><h3 class="item__heading"><a class="item__name" href="#mixin-font-face">font-face</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@mixin font-face($name, $path, $weight, $style, $exts: eot woff2 woff ttf svg) { 
+	$src: null;
+
+	$extmods: (
+		eot: &quot;?&quot;,
+		svg: &quot;#&quot; + tools.str-replace($name, &quot; &quot;, &quot;_&quot;)
+	);
+
+	$formats: (
+		otf: &quot;opentype&quot;,
+		ttf: &quot;truetype&quot;
+	);
+
+	@each $ext in $exts {
+		$extmod: if(map.has-key($extmods, $ext), $ext + map.get($extmods, $ext), $ext);
+		$format: if(map.has-key($formats, $ext), map.get($formats, $ext), $ext);
+		$src: append($src, url(string.quote($path + &quot;.&quot; + $extmod)) format(string.quote($format)), comma);
+	}
+
+	@font-face {
+		font-family: string.quote($name);
+		font-style: $style;
+		font-weight: $weight;
+		src: $src;
+	}
+ }" data-collapsed="@mixin font-face($name, $path, $weight, $style, $exts: eot woff2 woff ttf svg) { ... }"><code>@mixin font-face($name, $path, $weight, $style, $exts: eot woff2 woff ttf svg) { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Mixin cuyo objetivo es crear una fuente partiendo de una ruta establecida</p></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$name</code></th><td data-label="desc"><p>Nombre de la fuente.</p></td><td data-label="type"><code>String</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$path</code></th><td data-label="desc"><p>Localización de la fuente.</p></td><td data-label="type"><code>String</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$weight</code></th><td data-label="desc"><p>Grosor de la fuente.</p></td><td data-label="type"><code>String</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$style</code></th><td data-label="desc"><p>Estilo de la fuente.</p></td><td data-label="type"><code>String</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$exts</code></th><td data-label="desc"><p>Formato de fuentes a crear por medio del mixin.</p></td><td data-label="type"><code>String</code></td><td data-label="default"><code>eot woff2 woff ttf svg</code></td></tr></tbody></table><h3 class="item__sub-heading">Example</h3><div class="item__example example"><pre class="example__code language-scss"><code>@include font-face(&quot;Helvetica--Neue--35&quot;, &quot;fonts/helvetica--neue/HelvNeue35&quot;, 500, normal);</code></pre></div><div class="item__example example"><pre class="example__code language-css"><code>@font-face {
+     font-family: &quot;Helvetica--Neue--35&quot;;
+     font-style: normal;
+     font-weight: 500;
+     src: url(&quot;fonts/helvetica--neue/HelvNeue35.eot?&quot;) format(&quot;eot&quot;),
+     url(&quot;fonts/helvetica--neue/HelvNeue35.woff2&quot;) format(&quot;woff2&quot;),
+     url(&quot;fonts/helvetica--neue/HelvNeue35.woff&quot;) format(&quot;woff&quot;),
+     url(&quot;fonts/helvetica--neue/HelvNeue35.ttf&quot;) format(&quot;truetype&quot;),
+     url(&quot;fonts/helvetica--neue/HelvNeue35.svg#Helvetica--Neue--35&quot;) format(&quot;svg&quot;);
+}</code></pre></div><h3 class="item__sub-heading">Requires</h3><ul class="list-unstyled"><li class="item__description item__description--inline"><span class="item__cross-type">[function]</span> <a href="#functions-function-str-replace"><code>str-replace</code></a></li></ul></section></section></section><section class="main__section"><h1 class="main__heading" id="functions"><div class="container">functions</div></h1><section class="main__sub-section" id="functions-function"><h2 class="main__heading--secondary"><div class="container">functions</div></h2><section class="main__item container item" id="functions-function-str-replace"><h3 class="item__heading"><a class="item__name" href="#function-str-replace">str-replace</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@function str-replace($string, $search, $replace: &quot;&quot;) { 
+	$index: str-index($string, $search);
+
+	@if $index {
+		@return string.slice($string, 1, $index - 1) + $replace + string.replace(string.slice($string, $index + str-length($search)), $search, $replace);
+	}
+
+	@return $string;
+ }" data-collapsed="@function str-replace($string, $search, $replace: &quot;&quot;) { ... }"><code>@function str-replace($string, $search, $replace: &quot;&quot;) { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Mixin cuyo objetivo es partiendo de un string reemplazar un carácter por otro</p></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$string</code></th><td data-label="desc"><p>String a modificar.</p></td><td data-label="type"><code>String</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$search</code></th><td data-label="desc"><p>Carácter a buscar.</p></td><td data-label="type"><code>String</code></td><td data-label="default">&mdash;<span class="visually-hidden"> none</span></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$replace</code></th><td data-label="desc"><p>Carácter que reemplazara al string establecido.</p></td><td data-label="type"><code>String</code></td><td data-label="default"><code>&quot;&quot;</code></td></tr></tbody></table><h3 class="item__sub-heading">Example</h3><div class="item__example example"><pre class="example__code language-scss"><code>
+str-replace($name, &quot; &quot;, &quot;_&quot;)</code></pre></div><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[mixin]</span> <a href="#fonts-mixin-font-face"><code>font-face</code></a></li></ul></section></section></section><section class="main__section"><h1 class="main__heading" id="grid"><div class="container">grid</div></h1><section class="main__sub-section" id="grid-variable"><h2 class="main__heading--secondary"><div class="container">variables</div></h2><section class="main__item container item" id="grid-variable-breakpoints"><h3 class="item__heading"><a class="item__name" href="#variable-breakpoints">breakpoints</a></h3><div class="item__code-wrapper"><pre class="item__code language-scss"><code>$breakpoints: (
+  sm: (
+    gutter:30px,
+    offset:50px,
+    columns:4,
+    width:360px
+  ),
+  md: (
+    gutter:30px,
+    offset:50px,
+    columns:6,
+    width:768px
+  ),
+  lg: (
+    gutter:30px,
+    offset:50px,
+    columns:12,
+    width:1440px
+  ),
+  xlg: (
+    gutter:30px,
+    offset:50px,
+    columns:12,
+    width:1920px
+  ),
+);</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Mapa creado dinamicamente en base al fichero de configuración. Define los puntos de ruptura de los distintos breakpoints</p></div><h3 class="item__sub-heading">Type</h3><p><code>Map</code></p><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[mixin]</span> <a href="#grid-mixin-get-grid"><code>get-grid</code></a></li><li><span class="item__cross-type">[mixin]</span> <a href="#spacing-mixin-get-utilities-spacing"><code>get-utilities-spacing</code></a></li></ul></section></section><section class="main__sub-section" id="grid-mixin"><h2 class="main__heading--secondary"><div class="container">mixins</div></h2><section class="main__item container item" id="grid-mixin-get-grid"><h3 class="item__heading"><a class="item__name" href="#mixin-get-grid">get-grid</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@mixin get-grid($breakpoints: $breakpoints) { 
+  @each $break, $breakpoint in $breakpoints {
+    $columns: map.get($breakpoint, &quot;columns&quot;);
+    @media only screen and (min-width: map.get($breakpoint,&quot;width&quot;)) {
+      @for $i from 1 through $columns {
+        $valor: unquote((100 / $columns * $i) + &quot;%&quot;);
+        .col-#{$break}-#{$i} {
+          box-sizing: border-box;
+          padding: 0 map.get($breakpoint, &quot;gutter&quot;);
+          flex: 0 0 $valor;
+          min-width: $valor;
+          max-width: $valor;
+        }
+      }
+    }
+  }
+ }" data-collapsed="@mixin get-grid($breakpoints: $breakpoints) { ... }"><code>@mixin get-grid($breakpoints: $breakpoints) { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Mixin que partiendo de los puntos de ruptura establecidos en el fichero de configuración, genera las clases del sistema de rejilla.</p></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$breakpoints</code></th><td data-label="desc"><p>Mapa establecido en la configuración inicial</p></td><td data-label="type"><code>Map</code></td><td data-label="default"><code>$breakpoints</code></td></tr></tbody></table><h3 class="item__sub-heading">Example</h3><div class="item__example example"><pre class="example__code language-scss"><code>@include get-grid();</code></pre></div><div class="item__example example"><pre class="example__code language-css"><code>@media only screen and (min-width: 0px) {
+ .col-sm-1 {
+   box-sizing: border-box;
+   padding: 0 30px;
+   flex: 0 0 25%;
+   min-width: 25%;
+   max-width: 25%;
+ }
+}...
+@media only screen and (min-width: 768px) {
+ .col-md-1 {
+   box-sizing: border-box;
+   padding: 0 30px;
+   flex: 0 0 16.6666666667%;
+   min-width: 16.6666666667%;
+   max-width: 16.6666666667%;
+ }
+}...
+@media only screen and (min-width: 1440px) {
+ .col-lg-1 {
+   box-sizing: border-box;
+   padding: 0 30px;
+   flex: 0 0 8.3333333333%;
+   min-width: 8.3333333333%;
+   max-width: 8.3333333333%;
+ }
+}...
+</code></pre></div><h3 class="item__sub-heading">Requires</h3><ul class="list-unstyled"><li class="item__description item__description--inline"><span class="item__cross-type">[variable]</span> <a href="#grid-variable-breakpoints"><code>breakpoints</code></a> &mdash; Mapa que define los puntos de ruptura, gutter y offset</li></ul></section></section></section><section class="main__section"><h1 class="main__heading" id="media-queries"><div class="container">media-queries</div></h1><section class="main__sub-section" id="media-queries-mixin"><h2 class="main__heading--secondary"><div class="container">mixins</div></h2><section class="main__item container item" id="media-queries-mixin-screen-sm"><h3 class="item__heading"><a class="item__name" href="#mixin-screen-sm">screen-sm</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@mixin screen-sm() { 
+        @media only screen and (min-width: 360px) {
+          @content
+        }
+       }" data-collapsed="@mixin screen-sm() { ... }"><code>@mixin screen-sm() { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Mixin cuyo objetivo es crear la media-query en base a los puntos de corte establecidos en el fichero de configuración</p></div><h3 class="item__sub-heading">Parameters</h3><p>None.</p><h3 class="item__sub-heading">Example</h3><div class="item__example example"><pre class="example__code language-scss"><code>.test{
+   width: 100%;
+   @include screen-md(){
+     width: auto;
+   }
+}</code></pre></div><div class="item__example example"><pre class="example__code language-css"><code>.test {
+   width: 100%;
+ }
+
+@media only screen and (min-width: 768px) {
+
+   .test {
+     width: auto;
+   }
+}</code></pre></div></section><section class="main__item container item" id="media-queries-mixin-screen-md"><h3 class="item__heading"><a class="item__name" href="#mixin-screen-md">screen-md</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@mixin screen-md() { 
+        @media only screen and (min-width: 768px) {
+          @content
+        }
+       }" data-collapsed="@mixin screen-md() { ... }"><code>@mixin screen-md() { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Mixin cuyo objetivo es crear la media-query en base a los puntos de corte establecidos en el fichero de configuración</p></div><h3 class="item__sub-heading">Parameters</h3><p>None.</p><h3 class="item__sub-heading">Example</h3><div class="item__example example"><pre class="example__code language-scss"><code>.test{
+   width: 100%;
+   @include screen-md(){
+     width: auto;
+   }
+}</code></pre></div><div class="item__example example"><pre class="example__code language-css"><code>.test {
+   width: 100%;
+ }
+
+@media only screen and (min-width: 768px) {
+
+   .test {
+     width: auto;
+   }
+}</code></pre></div></section><section class="main__item container item" id="media-queries-mixin-screen-lg"><h3 class="item__heading"><a class="item__name" href="#mixin-screen-lg">screen-lg</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@mixin screen-lg() { 
+        @media only screen and (min-width: 1440px) {
+          @content
+        }
+       }" data-collapsed="@mixin screen-lg() { ... }"><code>@mixin screen-lg() { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Mixin cuyo objetivo es crear la media-query en base a los puntos de corte establecidos en el fichero de configuración</p></div><h3 class="item__sub-heading">Parameters</h3><p>None.</p><h3 class="item__sub-heading">Example</h3><div class="item__example example"><pre class="example__code language-scss"><code>.test{
+   width: 100%;
+   @include screen-md(){
+     width: auto;
+   }
+}</code></pre></div><div class="item__example example"><pre class="example__code language-css"><code>.test {
+   width: 100%;
+ }
+
+@media only screen and (min-width: 768px) {
+
+   .test {
+     width: auto;
+   }
+}</code></pre></div></section><section class="main__item container item" id="media-queries-mixin-screen-xlg"><h3 class="item__heading"><a class="item__name" href="#mixin-screen-xlg">screen-xlg</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@mixin screen-xlg() { 
+        @media only screen and (min-width: 1920px) {
+          @content
+        }
+       }" data-collapsed="@mixin screen-xlg() { ... }"><code>@mixin screen-xlg() { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Mixin cuyo objetivo es crear la media-query en base a los puntos de corte establecidos en el fichero de configuración</p></div><h3 class="item__sub-heading">Parameters</h3><p>None.</p><h3 class="item__sub-heading">Example</h3><div class="item__example example"><pre class="example__code language-scss"><code>.test{
+   width: 100%;
+   @include screen-md(){
+     width: auto;
+   }
+}</code></pre></div><div class="item__example example"><pre class="example__code language-css"><code>.test {
+   width: 100%;
+ }
+
+@media only screen and (min-width: 768px) {
+
+   .test {
+     width: auto;
+   }
+}</code></pre></div></section></section></section><section class="main__section"><h1 class="main__heading" id="spacing"><div class="container">spacing</div></h1><section class="main__sub-section" id="spacing-variable"><h2 class="main__heading--secondary"><div class="container">variables</div></h2><section class="main__item container item" id="spacing-variable-spacing"><h3 class="item__heading"><a class="item__name" href="#variable-spacing">spacing</a></h3><div class="item__code-wrapper"><pre class="item__code language-scss"><code>$spacing: (
+      increase:5,
+      limit:20
+  );</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Mapa creado dinamicamente en base al fichero de configuración. Define los atributos para crear las clases de utilidad de margin y padding</p></div><h3 class="item__sub-heading">Type</h3><p><code>Number</code></p><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[mixin]</span> <a href="#spacing-mixin-get-utilities-spacing"><code>get-utilities-spacing</code></a></li></ul></section><section class="main__item container item" id="spacing-variable-types"><h3 class="item__heading"><a class="item__name" href="#variable-types">types</a></h3><div class="item__code-wrapper"><pre class="item__code language-scss"><code>$types: (
+  mt: margin-top,
+  mr: margin-right,
+  mb: margin-bottom,
+  ml: margin-left,
+  pt: padding-top,
+  pr: padding-right,
+  pb: padding-bottom,
+  pl: padding-left
+);</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Mapa que define el prefijo de la clase y propiedad CSS del mixin de margenes y padding</p></div><h3 class="item__sub-heading">Type</h3><p><code>Map</code></p><h3 class="item__sub-heading">Used by</h3><ul class="list-unstyled"><li><span class="item__cross-type">[mixin]</span> <a href="#spacing-mixin-get-utilities-spacing"><code>get-utilities-spacing</code></a></li></ul></section></section><section class="main__sub-section" id="spacing-mixin"><h2 class="main__heading--secondary"><div class="container">mixins</div></h2><section class="main__item container item" id="spacing-mixin-get-utilities-spacing"><h3 class="item__heading"><a class="item__name" href="#mixin-get-utilities-spacing">get-utilities-spacing</a></h3><div class="item__code-wrapper"><pre class="item__code item__code--togglable language-scss" data-current-state="collapsed" data-expanded="@mixin get-utilities-spacing($breakpoints: $breakpoints, $spacing: $spacing) { 
+  @each $break, $breakpoint in $breakpoints {
+    @media only screen and (min-width: map.get($breakpoint,&quot;width&quot;)) {
+      $limit: map.get($spacing, &quot;limit&quot;);
+      @each $type, $property in $types {
+        @for $i from 1 through $limit {
+          $value: string.unquote($i + &quot;px&quot;);
+          .#{$type}-#{$break}-#{$i} {
+            #{$property}: $value;
+          }
+        }
+      }
+    }
+  }
+ }" data-collapsed="@mixin get-utilities-spacing($breakpoints: $breakpoints, $spacing: $spacing) { ... }"><code>@mixin get-utilities-spacing($breakpoints: $breakpoints, $spacing: $spacing) { ... }</code></pre></div><h3 class="item__sub-heading">Description</h3><div class="item__description"><p>Mixin que partiendo de los puntos de ruptura establecidos en el fichero de configuración, genera las clases del sistema de rejilla.</p></div><h3 class="item__sub-heading">Parameters</h3><table class="item__parameters"><thead><tr><th scope="col"><span class="visually-hidden">parameter </span>Name</th><th scope="col"><span class="visually-hidden">parameter </span>Description</th><th scope="col"><span class="visually-hidden">parameter </span>Type</th><th scope="col"><span class="visually-hidden">parameter </span>Default value</th></tr></thead><tbody><tr class="item__parameter"><th scope="row" data-label="name"><code>$breakpoints</code></th><td data-label="desc"><p>Mapa establecido en la configuración inicial</p></td><td data-label="type"><code>Map</code></td><td data-label="default"><code>$breakpoints</code></td></tr><tr class="item__parameter"><th scope="row" data-label="name"><code>$spacing</code></th><td data-label="desc"><p>Mapa establecido en la configuración inicial</p></td><td data-label="type"><code>Map</code></td><td data-label="default"><code>$spacing</code></td></tr></tbody></table><h3 class="item__sub-heading">Example</h3><div class="item__example example"><pre class="example__code language-scss"><code>@include get-utilities-spacing()</code></pre></div><div class="item__example example"><pre class="example__code language-css"><code>@media only screen and (min-width: 0px) {
+ .mt-sm-1 {
+     margin-top: 5px;
+  }...
+@media only screen and (min-width: 768px) {
+ .pb-md-2 {
+     padding-bottom: 10px;
+  }...
+@media only screen and (min-width: 1440px) {
+ .ml-lg-3 {
+     margin-left: 15px;
+  }...</code></pre></div><h3 class="item__sub-heading">Requires</h3><ul class="list-unstyled"><li class="item__description item__description--inline"><span class="item__cross-type">[variable]</span> <a href="#grid-variable-breakpoints"><code>breakpoints</code></a> &mdash; Mapa que define los puntos de ruptura, gutter y offset</li><li class="item__description item__description--inline"><span class="item__cross-type">[variable]</span> <a href="#spacing-variable-spacing"><code>spacing</code></a> &mdash; Mapa que define el valor exponencial de una clase a la siguiente y el número de estas clases que se van a crear</li><li class="item__description item__description--inline"><span class="item__cross-type">[variable]</span> <a href="#spacing-variable-types"><code>types</code></a> &mdash; Mapa que define el prefijo de la clase y propiedad CSS del mixin de margenes y padding</li></ul></section></section></section><footer class="footer" role="contentinfo"><div class="container"><div class="footer__project-info project-info"><!-- Name and URL --> <span class="project-info__name">Frontech-library</span><!-- Version --> <span class="project-info__version">- v1.0.0</span><!-- License --> <span class="project-info__license">, under ISC</span></div></div></footer></article><script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script><script>window.jQuery || document.write('<script src="assets/js/vendor/jquery.min.js"><\/script>')</script><script src="assets/js/main.min.js"></script></body></html>

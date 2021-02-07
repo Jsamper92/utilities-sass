@@ -1,0 +1,65 @@
+@use "sass:map";
+@use "sass:string";
+@use '../settings/settings.scss';
+
+/// Mapa que define el prefijo de la clase y propiedad CSS del mixin de margenes y padding
+/// @type map
+/// @group spacing
+
+$types: (
+  mt: margin-top,
+  mr: margin-right,
+  mb: margin-bottom,
+  ml: margin-left,
+  pt: padding-top,
+  pr: padding-right,
+  pb: padding-bottom,
+  pl: padding-left
+);
+
+/// Mixin que partiendo de los puntos de ruptura establecidos en el fichero de configuración, genera las clases del sistema de rejilla.
+///
+/// @argument {map}  $breakpoints [$breakpoints] Mapa establecido en la configuración inicial
+/// @argument {map}  $spacing [$spacing] Mapa establecido en la configuración inicial
+/// @requires $breakpoints Mapa que define los puntos de ruptura, gutter y offset
+/// @requires $spacing Mapa que define el valor exponencial de una clase a la siguiente y el número de estas clases que se van a crear
+/// @requires $types Mapa que define el prefijo de la clase y propiedad CSS del mixin de margenes y padding
+///
+/// @example scss
+///
+///       @include get-utilities-spacing()
+///
+/// @example css
+///
+///       @media only screen and (min-width: 0px) {
+///        .mt-sm-1 {
+///            margin-top: 5px;
+///         }...
+///       @media only screen and (min-width: 768px) {
+///        .pb-md-2 {
+///            padding-bottom: 10px;
+///         }...
+///       @media only screen and (min-width: 1440px) {
+///        .ml-lg-3 {
+///            margin-left: 15px;
+///         }...
+///
+/// @group spacing
+
+@mixin get-utilities-spacing($breakpoints:settings.$breakpoints, $spacing:settings.$spacing){
+  @each $break, $breakpoint in $breakpoints {
+    @media only screen and (min-width: map.get($breakpoint,"width")) {
+      $limit: map.get($spacing, "limit");
+      @each $type, $property in $types {
+        @for $i from 1 through $limit {
+          $value: string.unquote($i + "px");
+          .#{$type}-#{$break}-#{$i} {
+            #{$property}: $value;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include get-utilities-spacing();

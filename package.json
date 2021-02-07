@@ -1,0 +1,25 @@
+{
+  "name": "frontech-library",
+  "version": "1.0.0",
+  "description": "Libreria de utilidades sass ",
+  "main": "index.js",
+  "bin": {
+    "frontech-library": "./index.js"
+  },
+  "scripts": {
+    "sassdoc": "sassdoc2md 'sass/**/*.scss' ./README.md -s && sassdoc 'sass/**/*.scss' -v && node .frontech/readme.js",
+    "sass": "sass sass/abstracts.scss:abstracts.css",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "colors": "^1.4.0",
+    "plop": "^2.7.4",
+    "sass": "^1.32.6",
+    "sassdoc": "^2.7.3"
+  },
+  "dependencies": {
+    "@hidoo/sassdoc-to-markdown": "^0.4.2"
+  }
+}

@@ -1,0 +1,64 @@
+@use "sass:map";
+@use "sass:string";
+@use "../tools/tools.scss";
+
+/// Mixin cuyo objetivo es crear una fuente partiendo de una ruta establecida
+///
+/// @argument {string} $name
+///   Nombre de la fuente.
+/// @argument {string} $path
+///   Localización de la fuente.
+/// @argument {string} $weight
+///   Grosor de la fuente.
+/// @argument {string} $style
+///   Estilo de la fuente.
+/// @argument {string} $exts [eot woff2 woff ttf svg]
+///   Formato de fuentes a crear por medio del mixin.
+///
+/// @example scss
+///     @include font-face("Helvetica--Neue--35", "fonts/helvetica--neue/HelvNeue35", 500, normal);
+///
+/// @example css
+///
+///   @font-face {
+///        font-family: "Helvetica--Neue--35";
+///        font-style: normal;
+///        font-weight: 500;
+///        src: url("fonts/helvetica--neue/HelvNeue35.eot?") format("eot"),
+///        url("fonts/helvetica--neue/HelvNeue35.woff2") format("woff2"),
+///        url("fonts/helvetica--neue/HelvNeue35.woff") format("woff"),
+///        url("fonts/helvetica--neue/HelvNeue35.ttf") format("truetype"),
+///        url("fonts/helvetica--neue/HelvNeue35.svg#Helvetica--Neue--35") format("svg");
+///   }
+///
+/// @group fonts
+
+@mixin font-face($name, $path, $weight: null, $style: null, $exts: eot woff2 woff ttf svg) {
+	$src: null;
+
+	$extmods: (
+		eot: "?",
+		svg: "#" + tools.str-replace($name, " ", "_")
+	);
+
+	$formats: (
+		otf: "opentype",
+		ttf: "truetype"
+	);
+
+	@each $ext in $exts {
+		$extmod: if(map.has-key($extmods, $ext), $ext + map.get($extmods, $ext), $ext);
+		$format: if(map.has-key($formats, $ext), map.get($formats, $ext), $ext);
+		$src: append($src, url(string.quote($path + "." + $extmod)) format(string.quote($format)), comma);
+	}
+
+	@font-face {
+		font-family: string.quote($name);
+		font-style: $style;
+		font-weight: $weight;
+		src: $src;
+	}
+}
+
+
+@include font-face("Helvetica--Neue--35", "fonts/helvetica--neue/HelvNeue35", 500, normal);
