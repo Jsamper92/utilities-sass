@@ -1,6 +1,6 @@
 {
   "name": "frontech-library",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Libreria de utilidades sass ",
   "main": "index.js",
   "bin": {
@@ -14,12 +14,11 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "colors": "^1.4.0",
-    "plop": "^2.7.4",
     "sass": "^1.32.6",
-    "sassdoc": "^2.7.3"
+    "sassdoc": "^2.7.3",
+    "@hidoo/sassdoc-to-markdown": "^0.4.2"
   },
   "dependencies": {
-    "@hidoo/sassdoc-to-markdown": "^0.4.2"
+    "colors": "^1.4.0"
   }
 }
