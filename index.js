@@ -1,7 +1,5 @@
 #!/usr/bin/env node
 
-const { mediaDocs } = require("./.frontech/utils");
-
 const [fs, utils] = [require("fs"), require("./.frontech/utils")];
 
 let indexItems = 0;
