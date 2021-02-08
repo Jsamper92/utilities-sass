@@ -5,7 +5,7 @@
 ///
 ///      .test{
 ///         width: 100%;
-///         @include screen-md(){
+///         @include screen-sm(){
 ///           width: auto;
 ///         }
 ///      }
@@ -16,8 +16,7 @@
 ///         width: 100%;
 ///       }
 ///
-///      @media only screen and (min-width: 768px) {
-///
+///      @media only screen and (min-width: 360px) {
 ///         .test {
 ///           width: auto;
 ///         }
@@ -48,7 +47,6 @@
 ///       }
 ///
 ///      @media only screen and (min-width: 768px) {
-///
 ///         .test {
 ///           width: auto;
 ///         }
@@ -67,7 +65,7 @@
 ///
 ///      .test{
 ///         width: 100%;
-///         @include screen-md(){
+///         @include screen-lg(){
 ///           width: auto;
 ///         }
 ///      }
@@ -78,8 +76,7 @@
 ///         width: 100%;
 ///       }
 ///
-///      @media only screen and (min-width: 768px) {
-///
+///      @media only screen and (min-width: 1440px) {
 ///         .test {
 ///           width: auto;
 ///         }
@@ -98,7 +95,7 @@
 ///
 ///      .test{
 ///         width: 100%;
-///         @include screen-md(){
+///         @include screen-xlg(){
 ///           width: auto;
 ///         }
 ///      }
@@ -109,8 +106,7 @@
 ///         width: 100%;
 ///       }
 ///
-///      @media only screen and (min-width: 768px) {
-///
+///      @media only screen and (min-width: 1920px) {
 ///         .test {
 ///           width: auto;
 ///         }

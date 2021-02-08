@@ -33,7 +33,7 @@ const generateMediaQueries = (breakpoints) => {
   for (const key in breakpoints) {
     let value = breakpoints[key];
     const [width] = [value.width];
-    medias += `/// Mixin cuyo objetivo es crear la media-query en base a los puntos de corte establecidos en el fichero de configuración\n///\n///\n/// @example scss\n///\n///      .test{\n///         width: 100%;\n///         @include screen-md(){\n///           width: auto;\n///         }\n///      }\n///\n/// @example css\n///\n///      .test {\n///         width: 100%;\n///       }\n///\n///      @media only screen and (min-width: 768px) {\n///\n///         .test {\n///           width: auto;\n///         }\n///      }\n///\n/// @group media-queries
+    medias += `/// Mixin cuyo objetivo es crear la media-query en base a los puntos de corte establecidos en el fichero de configuración\n///\n///\n/// @example scss\n///\n///      .test{\n///         width: 100%;\n///         @include screen-${key}(){\n///           width: auto;\n///         }\n///      }\n///\n/// @example css\n///\n///      .test {\n///         width: 100%;\n///       }\n///\n///      @media only screen and (min-width: ${width}) {\n///         .test {\n///           width: auto;\n///         }\n///      }\n///\n/// @group media-queries
       @mixin screen-${key}{
         @media only screen and (min-width: ${width}) {
           @content

@@ -198,7 +198,7 @@ Mixin cuyo objetivo es crear la media-query en base a los puntos de corte establ
 ```scss
 .test{
    width: 100%;
-   @include screen-md(){
+   @include screen-sm(){
      width: auto;
    }
 }
@@ -209,8 +209,7 @@ Mixin cuyo objetivo es crear la media-query en base a los puntos de corte establ
    width: 100%;
  }
 
-@media only screen and (min-width: 768px) {
-
+@media only screen and (min-width: 360px) {
    .test {
      width: auto;
    }
@@ -243,7 +242,6 @@ Mixin cuyo objetivo es crear la media-query en base a los puntos de corte establ
  }
 
 @media only screen and (min-width: 768px) {
-
    .test {
      width: auto;
    }
@@ -264,7 +262,7 @@ Mixin cuyo objetivo es crear la media-query en base a los puntos de corte establ
 ```scss
 .test{
    width: 100%;
-   @include screen-md(){
+   @include screen-lg(){
      width: auto;
    }
 }
@@ -275,8 +273,7 @@ Mixin cuyo objetivo es crear la media-query en base a los puntos de corte establ
    width: 100%;
  }
 
-@media only screen and (min-width: 768px) {
-
+@media only screen and (min-width: 1440px) {
    .test {
      width: auto;
    }
@@ -297,7 +294,7 @@ Mixin cuyo objetivo es crear la media-query en base a los puntos de corte establ
 ```scss
 .test{
    width: 100%;
-   @include screen-md(){
+   @include screen-xlg(){
      width: auto;
    }
 }
@@ -308,8 +305,7 @@ Mixin cuyo objetivo es crear la media-query en base a los puntos de corte establ
    width: 100%;
  }
 
-@media only screen and (min-width: 768px) {
-
+@media only screen and (min-width: 1920px) {
    .test {
      width: auto;
    }
