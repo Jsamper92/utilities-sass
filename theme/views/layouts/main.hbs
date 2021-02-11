@@ -1,0 +1,23 @@
+<html lang="en">
+
+<head>
+    <!-- <meta> tags> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <title>Frontech Library</title>
+</head>
+
+<body>
+    <div class="container mx-auto grid grid-cols-3 gap-4">
+        <div class="bg-black grid-cols-4 h-full">
+
+        </div>
+        <div class="grid-cols-8">
+            {{#each posts}}
+                <p>{{this.description}}</p>
+            {{/each}}
+        </div>
+    </div>
+</body>
+
+</html>

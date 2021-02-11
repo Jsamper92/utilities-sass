@@ -7,6 +7,7 @@
     "frontech-library": "./index.js"
   },
   "scripts": {
+    "start": "nodemon theme/app.js",
     "sassdoc": "sassdoc2md 'sass/**/*.scss' ./README.md -s && sassdoc 'sass/**/*.scss' -v && node .frontech/readme.js",
     "sass": "sass sass/abstracts.scss:abstracts.css",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -16,7 +17,10 @@
   "devDependencies": {
     "sass": "^1.32.6",
     "sassdoc": "^2.7.3",
-    "@hidoo/sassdoc-to-markdown": "^0.4.2"
+    "@hidoo/sassdoc-to-markdown": "^0.4.2",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.2.0",
+    "nodemon": "^2.0.7"
   },
   "dependencies": {
     "colors": "^1.4.0"
