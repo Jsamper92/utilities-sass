@@ -10,6 +10,7 @@
     "start": "nodemon theme/app.js",
     "sassdoc": "sassdoc2md 'sass/**/*.scss' ./README.md -s && sassdoc 'sass/**/*.scss' -v && node .frontech/readme.js",
     "sass": "sass sass/abstracts.scss:abstracts.css",
+    "sass:theme": "sass --watch theme/public/styles/scss/main.scss theme/public/styles/css/style.css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

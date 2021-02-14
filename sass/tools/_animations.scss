@@ -1,0 +1,24 @@
+
+
+/// Primer mixin de animaciones
+/// @group animations
+
+@mixin animation-example(){
+    @keyframes identifier {
+        0%{
+            transform: translate(0);
+        }
+
+        100%{
+            transform: translate(100px);
+        }
+    }
+}
+
+
+/// Primer funcion de animaciones
+/// @group animations
+
+@function animation(){
+    @return 'ok'
+}

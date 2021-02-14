@@ -312,6 +312,38 @@ Mixin cuyo objetivo es crear la media-query en base a los puntos de corte establ
 }
 ```
 
+<a id="media-queries-mixin-screen-xxlg"></a>
+
+# @mixin screen-xxlg
+
+Mixin cuyo objetivo es crear la media-query en base a los puntos de corte establecidos en el fichero de configuración
+
++ **Group:** Media-queries
++ **Access:** public
+
+## Examples
+
+```scss
+.test{
+   width: 100%;
+   @include screen-xxlg(){
+     width: auto;
+   }
+}
+```
+
+```css
+.test {
+   width: 100%;
+ }
+
+@media only screen and (min-width: 1920px) {
+   .test {
+     width: auto;
+   }
+}
+```
+
 <a id="spacing-variable-spacing"></a>
 
 # $spacing
