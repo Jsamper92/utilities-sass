@@ -471,16 +471,18 @@
                         </table>
 
                         {{/if}}
+
+                        {{#if (isAnimation this.context.type)}}
                         <h3 class="section__subtitle">
                             Example
                         </h3>
-                        {{#each this.example}}
-                        <div class="section__code-wrapper example">
+                        <div class="section__code-wrapper example example--animation">
                             <pre>
-                                <span>{{this.code}}</span>
+                                <span class="demo-animation" style="animation: {{this.context.name}} 500ms ease alternate infinite"></span>
                             </pre>
                         </div>
-                        {{/each}}
+                        
+                        {{/if}}
                         {{#if (isDefined this.require)}}
                         <h3 class="section__subtitle">
                             Dependencias

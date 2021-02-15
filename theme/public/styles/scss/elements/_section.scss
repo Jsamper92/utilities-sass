@@ -89,6 +89,20 @@
         height: auto;
       }
     }
+    &.example--animation{
+      & > pre{
+        display: flex;
+        min-width: 580px;
+        min-height: 300px;
+        justify-content: center;
+        .demo-animation{
+          width: 100px;
+          height: 100px;
+          background-color: #b81e6c;
+          border-radius: 50%;
+        }
+      }
+    }
     & > pre {
       height: 56px;
       padding: 1em;

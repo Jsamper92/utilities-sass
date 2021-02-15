@@ -8,12 +8,10 @@ const [express, exphbs, sassdoc, fs, path] = [
 const app = express();
 const publicPath = path.resolve(__dirname, "public");
 
-
-
 app.engine(
   "hbs",
   exphbs({
-    helpers: require('./handlers/handlebars'),
+    helpers: require("./handlers/handlebars"),
     defaultLayout: "",
     extname: ".hbs"
   })
@@ -33,12 +31,37 @@ const groupData = (array) => {
   }, {});
 };
 
+const createImportsUtilities = () => {
+  let imports = "";
+  const utilitiesPath = `${__dirname}//public/styles/scss/utilities/utilities.scss`;
+  imports += `@use 'grid';\n@use 'animations';`;
+  
+  fs.writeFileSync(utilitiesPath,imports, () => true);
+};
+
+const createKeyFrames = (array) => {
+  let data = "";
+  array
+    .filter((item) => item.group[0] === "animations")
+    .map((keyframe) =>
+      keyframe.context.type === "mixin"
+        ? (data += `${keyframe.context.code} `)
+        : null
+    );
+  fs.writeFileSync(
+    `${__dirname}/public/styles/scss/utilities/_animations.scss`,
+    data,
+    () => true
+  );
+  createImportsUtilities();
+};
+
 sassdoc
   .parse(`${__dirname}/../sass/**/*.scss`, { verbose: true })
   .then(function (data) {
     app.get("/", (req, res) => {
-      
       // fs.writeFile('doc.json',JSON.stringify(groupData(data),null,2),() => true);
+      createKeyFrames(data);
       res.render(__dirname + "/views/layouts/main", {
         posts: groupData(data)
       });
