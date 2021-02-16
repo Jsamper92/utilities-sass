@@ -1,27 +1,30 @@
 {
   "name": "frontech-library",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Libreria de utilidades sass ",
   "main": "index.js",
   "bin": {
     "frontech-library": "./index.js"
   },
   "scripts": {
-    "start": "nodemon theme/app.js",
+    "start": "concurrently 'npm run sass:theme-watch' 'npm run serve'",
+    "serve":"nodemon theme/app.js",
     "sassdoc": "sassdoc2md 'sass/**/*.scss' ./README.md -s && sassdoc 'sass/**/*.scss' -v && node .frontech/readme.js",
     "sass": "sass sass/abstracts.scss:abstracts.css",
-    "sass:theme": "sass --watch theme/public/styles/scss/main.scss theme/public/styles/css/style.css",
+    "sass:theme": "sass --watch --no-source-map theme/public/styles/scss/main.scss theme/public/styles/css/style.css",
+    "sass:theme-watch": "sass --watch --no-source-map theme/public/styles/scss/main.scss theme/public/styles/css/style.css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "sass": "^1.32.6",
-    "sassdoc": "^2.7.3",
     "@hidoo/sassdoc-to-markdown": "^0.4.2",
+    "concurrently": "^5.3.0",
     "express": "^4.17.1",
     "express-handlebars": "^5.2.0",
-    "nodemon": "^2.0.7"
+    "nodemon": "^2.0.7",
+    "sass": "^1.32.6",
+    "sassdoc": "^2.7.3"
   },
   "dependencies": {
     "colors": "^1.4.0"

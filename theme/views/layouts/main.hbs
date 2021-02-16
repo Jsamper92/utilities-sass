@@ -330,15 +330,16 @@
                             <pre id="grid-{{@index}}" aria-expanded="false" data-type="{{this.context.type}}">
                                 <span class="section__code-wrapper--title">
                                     {{#if (isMixin this.context.type)}}
-                                    <span>@{{this.context.type}}</span>
+                                    <span>${{this.context.type}}</span>
                                     <span>{{this.context.name}}(</span>
                                     <span>{{#each this.parameter}}{{#if @last}}{{this.name}}{{else}}${{this.name}}, {{/if}}{{/each}}</span>)
                                     {{else}}
-                                    {{this.context.value}}
+                                    <span>${{this.context.name}}:</span>
+                                    <span> {{this.context.value}}</span>
                                     {{/if}}
                                 </span>
                                 <span id="grid-content-{{@index}}" class="section__code-wrapper--code">
-                                    {{this.context.code}}
+                                    <span>{{this.context.code}}</span>
                                 </span>
                             </pre>
 
@@ -472,7 +473,7 @@
 
                         {{/if}}
 
-                        {{#if (isAnimation this.context.type)}}
+                        {{#if (isMixin this.context.type)}}
                         <h3 class="section__subtitle">
                             Example
                         </h3>
@@ -481,7 +482,7 @@
                                 <span class="demo-animation" style="animation: {{this.context.name}} 500ms ease alternate infinite"></span>
                             </pre>
                         </div>
-                        
+
                         {{/if}}
                         {{#if (isDefined this.require)}}
                         <h3 class="section__subtitle">
@@ -526,7 +527,8 @@
                                     <span>{{this.context.name}}(</span>
                                     <span>{{#each this.parameter}}{{#if @last}}{{this.name}}{{else}}${{this.name}}, {{/if}}{{/each}}</span>)
                                     {{else}}
-                                    {{this.context.value}}
+                                    <span>${{this.context.name}}:</span>
+                                    <span>{{this.context.value}}</span>
                                     {{/if}}
                                 </span>
                                 <span id="spacing-content-{{@index}}" class="section__code-wrapper--code">

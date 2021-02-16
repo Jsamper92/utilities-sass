@@ -9,9 +9,6 @@ module.exports = {
     return value !== undefined;
   },
   isMixin: function (value) {
-    return value !== ("variable" | "function");
+    return value === 'mixin';
   },
-  isAnimation: function(value){
-    return value === 'mixin'
-  }
 };

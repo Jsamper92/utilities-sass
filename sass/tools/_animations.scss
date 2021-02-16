@@ -14,19 +14,3 @@
         }
     }
 }
-
-
-/// Segundo mixin de animaciones
-/// @group animations
-
-@mixin animation-example-2(){
-    @keyframes animation-example-2 {
-        0%{
-            transform: scale(0);
-        }
-
-        100%{
-            transform: scale(1);
-        }
-    }
-}
