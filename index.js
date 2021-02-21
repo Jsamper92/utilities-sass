@@ -211,7 +211,7 @@ if (Object.keys(data).length == indexItems) {
   utils.createFile(
     `${pathSettings}/settings`,
     "settings.scss",
-    `@forward 'general';\n@forward 'media-queries';\n${partials};`
+    `@forward 'general';\n@forward 'media-queries';\n${partials}`
   );
 }
 
