@@ -102,7 +102,7 @@ StyleDictionary.registerFormat({
             );`;
     } catch {
       utils.errorConsole(
-        "No se ha especificado ninguna configuración de las utilidades de grid.El archivo se creará sin contenido. Por favor revisa el fichero de configuración .frontech.json"
+        "No se ha especificado ninguna configuración de las utilidades de grid. El archivo se creará sin contenido. Por favor revisa el fichero de configuración .frontech.json."
       );
       return "";
     }
@@ -127,7 +127,7 @@ StyleDictionary.registerFormat({
       return result;
     } catch {
       utils.errorConsole(
-        "No se ha especificado ninguna configuración de las utilidades de grid.El archivo se creará sin contenido. Por favor revisa el fichero de configuración .frontech.json"
+        "No se ha especificado ninguna configuración de las utilidades de grid. El archivo se creará sin contenido. Por favor revisa el fichero de configuración .frontech.json."
       );
       return "";
     }
@@ -147,7 +147,7 @@ StyleDictionary.registerFormat({
       `;
     } catch {
       utils.errorConsole(
-        "No se ha especificado ninguna configuración de las utilidades de espacio.El archivo se creará sin contenido. Por favor revisa el fichero de configuración .frontech.json"
+        "No se ha especificado ninguna configuración de las utilidades de espacio. El archivo se creará sin contenido. Por favor revisa el fichero de configuración .frontech.json."
       );
       return "";
     }
@@ -166,7 +166,7 @@ StyleDictionary.registerFormat({
       return `/// Variables de color definida en el archivo .frontech.json\n///@group colors\n:root{${customProperties}};`;
     } catch {
       utils.errorConsole(
-        "No se ha especificado ninguna configuración de las colores. El archivo se creará sin contenido. Por favor revisa el fichero de configuración .frontech.json"
+        "No se ha especificado ninguna configuración de las colores. El archivo se creará sin contenido. Por favor revisa el fichero de configuración .frontech.json."
       );
       return "";
     }
@@ -188,7 +188,7 @@ StyleDictionary.registerFormat({
       return `/// Mapa de fuentes definida en el archivo .frontech.json\n///@group fonts\n$fonts:(${fonts});\n\n/// Custom properties cuyo valor es el nombre aportado en el fichero .frontech.json\n/// @group fonts\n:root{\n${customProperties}};`;
     } catch {
       utils.errorConsole(
-        "No se ha especificado ninguna configuración de tipografias. El archivo se creará sin contenido. Por favor revisa el fichero de configuración .frontech.json"
+        "No se ha especificado ninguna configuración de tipografias. El archivo se creará sin contenido. Por favor revisa el fichero de configuración .frontech.json."
       );
       return "";
     }
