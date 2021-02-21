@@ -77,12 +77,10 @@
                 <div class="indice__body">
                     <h3 class="indice__title">FRONTECH LIBRARY</h3>
                     <p>Frontech Library tiene como objetivo aportar una serie de utilidades comunes al inicio de
-                        cualquier
-                        proyecto front asi como determinados mixin que faciliten el desarrollo del dia a dia como puede
-                        ser
-                        clases de margin,padding,grid, animaciones base y elementos comunes. Para más información revisa
-                        la
-                        documentación en la ruta <code>Frontech Guidelines/index.html</code>.</p>
+                        cualquier proyecto front asi como determinados mixin que faciliten el desarrollo del dia a dia
+                        como puede ser clases de margin,padding,grid, animaciones base y elementos comunes. Para más
+                        información lanzar el comando <code>npm run start</code> y acceder a la documentación en el navegador
+                        bajo el puerto <code>http://localhost:3000/</code>.</p>
                     <p>Para el correcto funcionamiento de la libreria es preciso crear un archivo de configuración en el
                         proyecto llamado <code>.frontech.json</code>, el cual determinara las utilidades de margin,
                         padding
@@ -210,14 +208,20 @@
                     </h3>
                     <div class="section__information">
                         <div class="section__code-wrapper" onclick="openCode('font',{{@index}})">
-                            <pre id="font-{{@index}}" aria-expanded="false">
+                            <pre id="font-{{@index}}" aria-expanded="false" data-type="{{this.context.type}}">
+
                                 <span class="section__code-wrapper--title">
-                                    <span>@{{this.context.type}}</span>
+                                    {{#if (isMixin this.context.type)}}
+                                    <span>${{this.context.type}}</span>
                                     <span>{{this.context.name}}(</span>
-                                    <span>{{#each this.parameter}}{{#if @last}}{{this.name}}:<span data-wrapper="default">{{this.default}}</span>{{else}}${{this.name}}, {{/if}}{{/each}}</span>)
+                                    <span>{{#each this.parameter}}{{#if @last}}{{this.name}}{{else}}${{this.name}}, {{/if}}{{/each}}</span>)
+                                    {{else}}
+                                    <span>${{this.context.name}}:</span>
+                                    <span> {{this.context.value}}</span>
+                                    {{/if}}
                                 </span>
                                 <span id="font-content-{{@index}}" class="section__code-wrapper--code">
-                                    {{this.context.code}}
+                                    <span>{{this.context.code}}</span>
                                 </span>
                             </pre>
 
@@ -254,16 +258,7 @@
                         </table>
 
                         {{/if}}
-                        <h3 class="section__subtitle">
-                            Example
-                        </h3>
-                        {{#each this.example}}
-                        <div class="section__code-wrapper example">
-                            <pre>
-                                <span>{{this.code}}</span>
-                            </pre>
-                        </div>
-                        {{/each}}
+                        {{#if (isDefined)}}
                         <h3 class="section__subtitle">
                             Dependencias
                         </h3>
@@ -277,6 +272,7 @@
                             </span>
                         </li>
                         {{/each}}
+                        {{/if}}
                     </div>
                     {{/each}}
                 </div>
@@ -343,6 +339,7 @@
                         </table>
 
                         {{/if}}
+                        {{#if (isDefined this.example)}}
                         <h3 class="section__subtitle">
                             Example
                         </h3>
@@ -353,6 +350,7 @@
                             </pre>
                         </div>
                         {{/each}}
+                        {{/if}}
                         {{#if (isDefined this.require)}}
                         <h3 class="section__subtitle">
                             Dependencias

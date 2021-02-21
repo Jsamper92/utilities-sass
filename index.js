@@ -2,7 +2,6 @@
 const [fs, utils] = [require("fs"), require("./.frontech/utils")];
 let indexItems = 0;
 const pathSettings = `${__dirname}/library/web`;
-const pathBuild = process.cwd();
 const fileConfig = process.argv.filter((file) =>
   /.frontech.json/.test(file) ? file : null
 );
@@ -21,11 +20,18 @@ const StyleDictionary = require("style-dictionary").extend({
           format: "custom/properties-color",
           filter: {
             type: "color"
-          },
+          }
         },
         {
-          destination: "settings/_breakpoints.scss",
-          format: "custom/breakpoints",
+          destination: "settings/_typography.scss",
+          format: "custom/properties-typography",
+          filter: {
+            type: "typography"
+          }
+        },
+        {
+          destination: "settings/_grid.scss",
+          format: "custom/grid",
           filter: {
             type: "grid"
           }
@@ -70,11 +76,11 @@ const StyleDictionary = require("style-dictionary").extend({
 });
 
 StyleDictionary.registerFormat({
-  name: "custom/breakpoints",
+  name: "custom/grid",
   formatter: (dictionary) => {
     let result = [];
-    for (const key in dictionary.properties.breakpoints) {
-      let value = dictionary.properties.breakpoints[key];
+    for (const key in dictionary.properties.grid) {
+      let value = dictionary.properties.grid[key];
       layout = value.gutter.attributes.type;
       const [gutter, offset, columns, width] = [
         value.gutter,
@@ -99,8 +105,8 @@ StyleDictionary.registerFormat({
   name: "custom/mediaqueries",
   formatter: (dictionary) => {
     let result = [];
-    for (const key in dictionary.properties.breakpoints) {
-      let value = dictionary.properties.breakpoints[key];
+    for (const key in dictionary.properties.grid) {
+      let value = dictionary.properties.grid[key];
       layout = value.gutter.attributes.type;
       const [width] = [value.width];
       result += `/// Mixin cuyo objetivo es crear la media-query en base a los puntos de corte establecidos en el fichero de configuración\n///\n///\n/// @example scss\n///\n///      .test{\n///         width: 100%;\n///         @include screen-${key}(){\n///           width: auto;\n///         }\n///      }\n///\n/// @example css\n///\n///      .test {\n///         width: 100%;\n///       }\n///\n///      @media only screen and (min-width: ${width}) {\n///         .test {\n///           width: auto;\n///         }\n///      }\n///\n/// @group media-queries \n@mixin screen-${key}{
@@ -130,12 +136,27 @@ StyleDictionary.registerFormat({
   name: "custom/properties-color",
   formatter: (dictionary) => {
     let key = Object.keys(dictionary.properties.colors);
-    let customProperties = '\n';
-    key.forEach(item => {
+    let customProperties = "\n";
+    key.forEach((item) => {
       value = dictionary.properties.colors[item];
-      customProperties+= `--${item}:${value.value};\n`
-    })
+      customProperties += `--${item}:${value.value};\n`;
+    });
     return `/// Variables de color definida en el archivo .frontech.json\n///@group colors\n:root{${customProperties}};`;
+  }
+});
+
+StyleDictionary.registerFormat({
+  name: "custom/properties-typography",
+  formatter: (dictionary) => {
+    let key = Object.keys(dictionary.properties.typography);
+    let fonts = "";
+    let customProperties = "";
+    key.forEach((font) => {
+      value = dictionary.properties.typography[font];
+      fonts += `\n${font}: (\nname:${value.family.value},\nweight:${value.weight.value},\nstyle:${value.style.value}\n),`;
+      customProperties += `--${font}:${value.family.value};\n`;
+    });
+    return `/// Mapa de fuentes definida en el archivo .frontech.json\n///@group fonts\n$fonts:(${fonts});\n\n/// Custom properties cuyo valor es el nombre aportado en el fichero .frontech.json\n/// @group fonts\n:root{\n${customProperties}};`;
   }
 });
 
@@ -153,7 +174,11 @@ for (const key in data) {
 }
 
 if (Object.keys(data).length == indexItems) {
-  utils.createFile(`${pathSettings}/settings`, "settings.scss", `@forward 'general';\n${partials}`);
+  utils.createFile(
+    `${pathSettings}/settings`,
+    "settings.scss",
+    `@forward 'general';\n${partials}`
+  );
 }
 
 utils.printMessage("Proceso de creación de settings finalizado");

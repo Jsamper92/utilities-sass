@@ -1,6 +1,6 @@
 @use "sass:map";
 @use "sass:string";
-@use "../settings/general" as settings;
+@use "../settings/settings.scss" as settings;
 @use "../tools/tools.scss";
 
 /// Mixin cuyo objetivo es crear una fuente partiendo de una ruta establecida
@@ -62,4 +62,9 @@
 }
 
 
-@include font-face("Helvetica--Neue--35", 500, normal);
+@each $key,$value in settings.$fonts {
+    $name: map.get($value, 'name');
+    $weight: map.get($value, 'weight');
+    $style: map.get($value, 'style');
+    @include font-face($name, $weight, $style);
+}

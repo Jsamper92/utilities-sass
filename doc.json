@@ -114,11 +114,103 @@
         {
           "type": "function",
           "name": "str-replace"
+        },
+        {
+          "type": "variable",
+          "name": "font-path"
         }
       ],
       "file": {
         "path": "base/_fonts.scss",
         "name": "_fonts.scss"
+      }
+    },
+    {
+      "description": "Variable path por defecto de las fuentes definidas en el fichero .frontech.json. \nPara modificar la ruta, simplemente habra que setear la variable en la importación de la siguiente forma: @use 'frontech-library/library/web/abstracts' with($font-path:'public/assets/fonts/');\n",
+      "commentRange": {
+        "start": 1,
+        "end": 3
+      },
+      "context": {
+        "type": "variable",
+        "name": "font-path",
+        "value": "'assets/fonts/'",
+        "scope": "default",
+        "line": {
+          "start": 4,
+          "end": 4
+        }
+      },
+      "group": [
+        "fonts"
+      ],
+      "access": "public",
+      "file": {
+        "path": "settings/_general.scss",
+        "name": "_general.scss"
+      },
+      "usedBy": [
+        {
+          "description": "Mixin cuyo objetivo es crear una fuente partiendo de una ruta establecida\n\n",
+          "context": {
+            "type": "mixin",
+            "name": "font-face",
+            "code": "\n\t$src: null;\n\n\t$extmods: (\n\t\teot: \"?\",\n\t\tsvg: \"#\" + tools.str-replace($name, \" \", \"_\")\n\t);\n\n\t$formats: (\n\t\totf: \"opentype\",\n\t\tttf: \"truetype\"\n\t);\n\n\t@each $ext in $exts {\n\t\t$extmod: if(map.has-key($extmods, $ext), $ext + map.get($extmods, $ext), $ext);\n\t\t$format: if(map.has-key($formats, $ext), map.get($formats, $ext), $ext);\n\t\t$src: append($src, url(string.quote(settings.$font-path + $name + \".\" + $extmod)) format(string.quote($format)), comma);\n\t}\n\n\t@font-face {\n\t\tfont-family: string.quote($name);\n\t\tfont-style: $style;\n\t\tfont-weight: $weight;\n\t\tsrc: $src;\n\t}\n",
+            "line": {
+              "start": 37,
+              "end": 62
+            }
+          }
+        }
+      ]
+    },
+    {
+      "description": " Mapa de fuentes definida en el archivo .frontech.json\n",
+      "commentRange": {
+        "start": 1,
+        "end": 2
+      },
+      "context": {
+        "type": "variable",
+        "name": "fonts",
+        "value": "(\n  Helvetica--Neue--35: (\n    name: helvetica--Neue--35,\n    weight: 400,\n    style: normal\n  ),\n  Helvetica--Neue--55: (\n    name: helvetica--Neue--55,\n    weight: 400,\n    style: normal\n  ),\n  Lato-regular: (\n    name: lato-regular,\n    weight: 400,\n    style: normal\n  ),\n  Gotham-italic: (\n    name: gotham-italic,\n    weight: 300,\n    style: italic\n  )\n)",
+        "scope": "private",
+        "line": {
+          "start": 3,
+          "end": 24
+        }
+      },
+      "group": [
+        "fonts"
+      ],
+      "access": "public",
+      "file": {
+        "path": "settings/_typography.scss",
+        "name": "_typography.scss"
+      }
+    },
+    {
+      "description": "Custom properties cuyo valor es el nombre aportado en el fichero .frontech.json\n",
+      "commentRange": {
+        "start": 26,
+        "end": 27
+      },
+      "context": {
+        "type": "css",
+        "name": ":root",
+        "value": "--Helvetica--Neue--35: helvetica--Neue--35;\n  --Helvetica--Neue--55: helvetica--Neue--55;\n  --Lato-regular: lato-regular;\n  --Gotham-italic: gotham-italic;",
+        "line": {
+          "start": 28,
+          "end": 34
+        }
+      },
+      "group": [
+        "fonts"
+      ],
+      "access": "public",
+      "file": {
+        "path": "settings/_typography.scss",
+        "name": "_typography.scss"
       }
     }
   ],
@@ -210,8 +302,8 @@
       ],
       "access": "public",
       "file": {
-        "path": "settings/_breakpoints.scss",
-        "name": "_breakpoints.scss"
+        "path": "settings/_grid.scss",
+        "name": "_grid.scss"
       },
       "usedBy": [
         {

@@ -101,4 +101,4 @@ Para el correcto funcionamiento de la libreria es preciso crear un archivo de co
 
 Para la posible utilización de la libreria simplemente será necesario importar en tu hoja de estilos sass el siguiente archivo:
 
-```@use '~frontech-library/sass/abstracts.scss';```
+```@use '~frontech-library/library/web/abstracts';```
