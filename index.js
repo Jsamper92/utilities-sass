@@ -207,7 +207,6 @@ for (const key in data) {
   indexItems++;
   partials += `@forward '${key}';\n`;
 }
-console.log(partials);
 if (Object.keys(data).length == indexItems) {
   utils.createFile(
     `${pathSettings}/settings`,
