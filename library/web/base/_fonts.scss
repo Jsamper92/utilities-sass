@@ -1,5 +1,6 @@
 @use "sass:map";
 @use "sass:string";
+@use "../settings/general" as settings;
 @use "../tools/tools.scss";
 
 /// Mixin cuyo objetivo es crear una fuente partiendo de una ruta establecida
@@ -16,7 +17,7 @@
 ///   Formato de fuentes a crear por medio del mixin.
 ///
 /// @example scss
-///     @include font-face("Helvetica--Neue--35", "fonts/helvetica--neue/HelvNeue35", 500, normal);
+///     @include font-face("Helvetica--Neue--35", 500, normal);
 ///
 /// @example css
 ///
@@ -33,7 +34,7 @@
 ///
 /// @group fonts
 
-@mixin font-face($name, $path, $weight: null, $style: null, $exts: eot woff2 woff ttf svg) {
+@mixin font-face($name, $weight: null, $style: null, $exts: eot woff2 woff ttf svg) {
 	$src: null;
 
 	$extmods: (
@@ -49,7 +50,7 @@
 	@each $ext in $exts {
 		$extmod: if(map.has-key($extmods, $ext), $ext + map.get($extmods, $ext), $ext);
 		$format: if(map.has-key($formats, $ext), map.get($formats, $ext), $ext);
-		$src: append($src, url(string.quote($path + "." + $extmod)) format(string.quote($format)), comma);
+		$src: append($src, url(string.quote(settings.$font-path + "." + $extmod)) format(string.quote($format)), comma);
 	}
 
 	@font-face {

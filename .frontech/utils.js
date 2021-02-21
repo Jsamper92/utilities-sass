@@ -12,7 +12,6 @@ module.exports.createFile = (folder, file, data) => {
     } else {
       fs.writeFileSync(`${folder}/${file}`, data, () => true);
     }
-    this.successConsole(`El fichero ha sido creado en la ruta ${folder}/${file}`);
   } catch (error) {
     this.errorConsole("Ha ocurrido un error", error);
   }

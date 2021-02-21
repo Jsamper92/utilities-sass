@@ -1,99 +1,7 @@
-#!/usr/bin/env node
-/* 
-const [fs, utils] = [require("fs"), require("./.frontech/utils")];
-
-let indexItems = 0;
-const pathSettings = `${__dirname}dist/web`;
-const fileConfig = process.argv.filter((file) =>
-  /.frontech.json/.test(file) ? file : null
-);
-const data = JSON.parse(
-  fs.readFileSync(`${process.cwd()}/${fileConfig}`).toString()
-);
-
-const generateGrid = (breakpoints) => {
-  let grid = "";
-  for (const key in breakpoints) {
-    let value = breakpoints[key];
-
-    const [gutter, offset, columns, width] = [
-      value.gutter,
-      value.offset,
-      value.columns,
-      value.width
-    ];
-    grid += `\n  ${key}: (\n    gutter:${gutter},\n    offset:${offset},\n    columns:${columns},\n    width:${width}\n  ),`;
-  }
-
-  return `/// Mapa creado dinamicamente en base al fichero de configuración. Define los puntos de ruptura de los distintos breakpoints\n/// @type map\n/// @group grid \n$breakpoints: (${grid}\n);`;
-};
-
-const generateMediaQueries = (breakpoints) => {
-  let medias = "";
-  for (const key in breakpoints) {
-    let value = breakpoints[key];
-    const [width] = [value.width];
-    medias += `/// Mixin cuyo objetivo es crear la media-query en base a los puntos de corte establecidos en el fichero de configuración\n///\n///\n/// @example scss\n///\n///      .test{\n///         width: 100%;\n///         @include screen-${key}(){\n///           width: auto;\n///         }\n///      }\n///\n/// @example css\n///\n///      .test {\n///         width: 100%;\n///       }\n///\n///      @media only screen and (min-width: ${width}) {\n///         .test {\n///           width: auto;\n///         }\n///      }\n///\n/// @group media-queries
-      @mixin screen-${key}{
-        @media only screen and (min-width: ${width}) {
-          @content
-        }
-      };
-    `;
-  }
-
-  return medias;
-};
-
-const generateSpacing = (spacing) => {
-  let spacers = `/// Mapa creado dinamicamente en base al fichero de configuración. Define los atributos para crear las clases de utilidad de margin y padding\n/// @type number\n/// @group spacing
-  $spacing: (
-      increase:${spacing.increase},
-      limit:${spacing.limit}
-  );
-`;
-
-  return spacers;
-};
-
-
-utils.warningConsole(
-  `En base a la información aportada en el fichero de configuración ${fileConfig} se procede a generar los siguientes archivos: \n`
-);
-
-let partials = "";
-for (const key in data) {
-  indexItems++;
-  let config = data[key];
-  switch (key) {
-    case "grid":
-      const grid = generateGrid(config);
-      const medias = generateMediaQueries(config);
-      utils.createFile(`${pathSettings}/tools`, "_media-queries.scss", medias);
-      utils.createFile(`${pathSettings}/settings`, "_grid.scss", grid);
-      break;
-
-    case "spacing":
-      const spacing = generateSpacing(config);
-      utils.createFile(`${pathSettings}/settings`, "_spacing.scss", spacing);
-      break;
-    default:
-      break;
-  }
-  partials += `@forward '${key}';\n`;
-  if (Object.keys(data).length == indexItems) {
-    utils.createFile(`${pathSettings}/settings`, "settings.scss", partials);
-  }
-}
-
-
- */
-
 
 const [fs, utils] = [require("fs"), require("./.frontech/utils")];
 let indexItems = 0;
-const pathSettings = `${__dirname}/library/web`;
-const pathBuild = process.cwd();
+const pathSettings = `${__dirname}/dist/web/settings`;
 const fileConfig = process.argv.filter((file) =>
   /.frontech.json/.test(file) ? file : null
 );
@@ -105,38 +13,38 @@ const StyleDictionary = require("style-dictionary").extend({
   platforms: {
     scss: {
       transformGroup: "scss",
-      buildPath: `${__dirname}/library/web/`,
+      buildPath: `${process.cwd()}/dist/web/`,
       files: [
         {
-          destination: "settings/_colors.scss",
+          destination: "_colors.scss",
           format: "scss/variables",
           filter: {
             type: "color"
           }
         },
         {
-          destination: "settings/_typography.scss",
+          destination: "_typography.scss",
           format: "scss/variables",
           filter: {
             type: "typography"
           }
         },
         {
-          destination: "settings/_breakpoints.scss",
+          destination: "_grid.scss",
           format: "custom/breakpoints",
           filter: {
             type: "grid"
           }
         },
         {
-          destination: "settings/_media-queries.scss",
+          destination: "_media-queries.scss",
           format: "custom/mediaqueries",
           filter: {
             type: "grid"
           }
         },
         {
-          destination: "settings/_spacing.scss",
+          destination: "_spacing.scss",
           format: "custom/spacing",
           filter: {
             type: "spacing"
@@ -146,7 +54,7 @@ const StyleDictionary = require("style-dictionary").extend({
     },
     android: {
       transformGroup: "android",
-      buildPath: `${__dirname}/library/android/`,
+      buildPath: `${process.cwd()}/dist/android/`,
       files: [
         {
           destination: "tokens.colors.xml",
@@ -156,7 +64,7 @@ const StyleDictionary = require("style-dictionary").extend({
     },
     ios: {
       transformGroup: "ios",
-      buildPath: `${__dirname}/library/ios/`,
+      buildPath: `${process.cwd()}/dist/ios/`,
       files: [
         {
           destination: "tokens.h",
@@ -233,13 +141,13 @@ utils.warningConsole(
 
 StyleDictionary.buildAllPlatforms();
 let partials = "";
+
 for (const key in data) {
   indexItems++;
   partials += `@forward '${key}';\n`;
 }
-
+partials +=`@forward 'general';`;
 if (Object.keys(data).length == indexItems) {
-  utils.createFile(`${pathSettings}/settings`, "settings.scss", `@forward 'general';\n${partials}`);
+  utils.createFile(`${pathSettings}`, "settings.scss", partials);
 }
-
 utils.printMessage("Proceso de creación de settings finalizado");
