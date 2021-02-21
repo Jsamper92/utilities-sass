@@ -664,6 +664,15 @@ main div[class*=body] {
   color: #dd5a66;
 }
 
+:root {
+  --secondary_3:rgba(203.00000309944153, 223.00000190734863, 144.00000661611557, 1);
+  --secondary_2:rgba(143.00000667572021, 173.00000488758087, 136.00000709295273, 1);
+  --secondary_1:rgba(127.00000002980232, 156.00000590085983, 150.0000062584877, 1);
+  --primary_3:rgba(155.00000596046448, 193.00000369548798, 219.0000021457672, 1);
+  --primary_2:rgba(20.000000707805157, 131.00000739097595, 187.00000405311584, 1);
+  --primary_1:rgba(0, 102.00000151991844, 153.00000607967377, 1);
+}
+
 @media only screen and (min-width: 360px) {
   .col-sm-1 {
     box-sizing: border-box;
@@ -836,200 +845,6 @@ main div[class*=body] {
   }
 
   .col-lg-12 {
-    box-sizing: border-box;
-    padding: 0 30px;
-    flex: 0 0 100%;
-    min-width: 100%;
-    max-width: 100%;
-  }
-}
-@media only screen and (min-width: 1920px) {
-  .col-xlg-1 {
-    box-sizing: border-box;
-    padding: 0 30px;
-    flex: 0 0 8.3333333333%;
-    min-width: 8.3333333333%;
-    max-width: 8.3333333333%;
-  }
-
-  .col-xlg-2 {
-    box-sizing: border-box;
-    padding: 0 30px;
-    flex: 0 0 16.6666666667%;
-    min-width: 16.6666666667%;
-    max-width: 16.6666666667%;
-  }
-
-  .col-xlg-3 {
-    box-sizing: border-box;
-    padding: 0 30px;
-    flex: 0 0 25%;
-    min-width: 25%;
-    max-width: 25%;
-  }
-
-  .col-xlg-4 {
-    box-sizing: border-box;
-    padding: 0 30px;
-    flex: 0 0 33.3333333333%;
-    min-width: 33.3333333333%;
-    max-width: 33.3333333333%;
-  }
-
-  .col-xlg-5 {
-    box-sizing: border-box;
-    padding: 0 30px;
-    flex: 0 0 41.6666666667%;
-    min-width: 41.6666666667%;
-    max-width: 41.6666666667%;
-  }
-
-  .col-xlg-6 {
-    box-sizing: border-box;
-    padding: 0 30px;
-    flex: 0 0 50%;
-    min-width: 50%;
-    max-width: 50%;
-  }
-
-  .col-xlg-7 {
-    box-sizing: border-box;
-    padding: 0 30px;
-    flex: 0 0 58.3333333333%;
-    min-width: 58.3333333333%;
-    max-width: 58.3333333333%;
-  }
-
-  .col-xlg-8 {
-    box-sizing: border-box;
-    padding: 0 30px;
-    flex: 0 0 66.6666666667%;
-    min-width: 66.6666666667%;
-    max-width: 66.6666666667%;
-  }
-
-  .col-xlg-9 {
-    box-sizing: border-box;
-    padding: 0 30px;
-    flex: 0 0 75%;
-    min-width: 75%;
-    max-width: 75%;
-  }
-
-  .col-xlg-10 {
-    box-sizing: border-box;
-    padding: 0 30px;
-    flex: 0 0 83.3333333333%;
-    min-width: 83.3333333333%;
-    max-width: 83.3333333333%;
-  }
-
-  .col-xlg-11 {
-    box-sizing: border-box;
-    padding: 0 30px;
-    flex: 0 0 91.6666666667%;
-    min-width: 91.6666666667%;
-    max-width: 91.6666666667%;
-  }
-
-  .col-xlg-12 {
-    box-sizing: border-box;
-    padding: 0 30px;
-    flex: 0 0 100%;
-    min-width: 100%;
-    max-width: 100%;
-  }
-}
-@media only screen and (min-width: 1920px) {
-  .col-xxlg-1 {
-    box-sizing: border-box;
-    padding: 0 30px;
-    flex: 0 0 8.3333333333%;
-    min-width: 8.3333333333%;
-    max-width: 8.3333333333%;
-  }
-
-  .col-xxlg-2 {
-    box-sizing: border-box;
-    padding: 0 30px;
-    flex: 0 0 16.6666666667%;
-    min-width: 16.6666666667%;
-    max-width: 16.6666666667%;
-  }
-
-  .col-xxlg-3 {
-    box-sizing: border-box;
-    padding: 0 30px;
-    flex: 0 0 25%;
-    min-width: 25%;
-    max-width: 25%;
-  }
-
-  .col-xxlg-4 {
-    box-sizing: border-box;
-    padding: 0 30px;
-    flex: 0 0 33.3333333333%;
-    min-width: 33.3333333333%;
-    max-width: 33.3333333333%;
-  }
-
-  .col-xxlg-5 {
-    box-sizing: border-box;
-    padding: 0 30px;
-    flex: 0 0 41.6666666667%;
-    min-width: 41.6666666667%;
-    max-width: 41.6666666667%;
-  }
-
-  .col-xxlg-6 {
-    box-sizing: border-box;
-    padding: 0 30px;
-    flex: 0 0 50%;
-    min-width: 50%;
-    max-width: 50%;
-  }
-
-  .col-xxlg-7 {
-    box-sizing: border-box;
-    padding: 0 30px;
-    flex: 0 0 58.3333333333%;
-    min-width: 58.3333333333%;
-    max-width: 58.3333333333%;
-  }
-
-  .col-xxlg-8 {
-    box-sizing: border-box;
-    padding: 0 30px;
-    flex: 0 0 66.6666666667%;
-    min-width: 66.6666666667%;
-    max-width: 66.6666666667%;
-  }
-
-  .col-xxlg-9 {
-    box-sizing: border-box;
-    padding: 0 30px;
-    flex: 0 0 75%;
-    min-width: 75%;
-    max-width: 75%;
-  }
-
-  .col-xxlg-10 {
-    box-sizing: border-box;
-    padding: 0 30px;
-    flex: 0 0 83.3333333333%;
-    min-width: 83.3333333333%;
-    max-width: 83.3333333333%;
-  }
-
-  .col-xxlg-11 {
-    box-sizing: border-box;
-    padding: 0 30px;
-    flex: 0 0 91.6666666667%;
-    min-width: 91.6666666667%;
-    max-width: 91.6666666667%;
-  }
-
-  .col-xxlg-12 {
     box-sizing: border-box;
     padding: 0 30px;
     flex: 0 0 100%;

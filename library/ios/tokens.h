@@ -3,7 +3,7 @@
 // tokens.h
 //
 // Do not edit directly
-// Generated on Sun, 21 Feb 2021 12:47:01 GMT
+// Generated on Sun, 21 Feb 2021 15:15:22 GMT
 //
 
 #import <Foundation/Foundation.h>
@@ -17,18 +17,6 @@
 #define ColorsPrimary3 rgba(155.00000596046448, 193.00000369548798, 219.0000021457672, 1)
 #define ColorsPrimary2 rgba(20.000000707805157, 131.00000739097595, 187.00000405311584, 1)
 #define ColorsPrimary1 rgba(0, 102.00000151991844, 153.00000607967377, 1)
-#define TypographyFontHeadline1Family Roboto
-#define TypographyFontHeadline1Size 28px
-#define TypographyFontHeadline1Weight 400
-#define TypographyFontHeadline2Family Roboto
-#define TypographyFontHeadline2Size 24px
-#define TypographyFontHeadline2Weight 400
-#define TypographyFontHeadline3Family Roboto
-#define TypographyFontHeadline3Size 20px
-#define TypographyFontHeadline3Weight 400
-#define TypographyFontBodyFamily Roboto
-#define TypographyFontBodySize 16px
-#define TypographyFontBodyWeight 400
 #define BreakpointsSmGutter 30px
 #define BreakpointsSmOffset 50px
 #define BreakpointsSmColumns 4
@@ -41,10 +29,6 @@
 #define BreakpointsLgOffset 50px
 #define BreakpointsLgColumns 12
 #define BreakpointsLgWidth 1440px
-#define BreakpointsXlgGutter 30px
-#define BreakpointsXlgOffset 50px
-#define BreakpointsXlgColumns 12
-#define BreakpointsXlgWidth 1920px
 #define SpacingIncrease 5
 #define SpacingLimit 20
 

@@ -88,33 +88,3 @@
               @content
             }
           };
-/// Mixin cuyo objetivo es crear la media-query en base a los puntos de corte establecidos en el fichero de configuración
-///
-///
-/// @example scss
-///
-///      .test{
-///         width: 100%;
-///         @include screen-xlg(){
-///           width: auto;
-///         }
-///      }
-///
-/// @example css
-///
-///      .test {
-///         width: 100%;
-///       }
-///
-///      @media only screen and (min-width: [object Object]) {
-///         .test {
-///           width: auto;
-///         }
-///      }
-///
-/// @group media-queries 
-@mixin screen-xlg{
-            @media only screen and (min-width: [object Object]) {
-              @content
-            }
-          };

@@ -9,7 +9,7 @@
       "context": {
         "type": "mixin",
         "name": "animation-example",
-        "code": "\n    @keyframes identifier {\n        0%{\n            transform: translate(0);\n        }\n\n        100%{\n            transform: translate(100px);\n        }\n    }\n",
+        "code": "\n    @keyframes animation-example {\n        0%{\n            transform: translate(0);\n        }\n\n        100%{\n            transform: translate(100px);\n        }\n    }\n",
         "line": {
           "start": 6,
           "end": 16
@@ -24,29 +24,31 @@
         "path": "tools/_animations.scss",
         "name": "_animations.scss"
       }
-    },
+    }
+  ],
+  "colors": [
     {
-      "description": "Primer funcion de animaciones\n",
+      "description": " Variables de color definida en el archivo .frontech.json\n",
       "commentRange": {
-        "start": 19,
-        "end": 20
+        "start": 1,
+        "end": 2
       },
       "context": {
-        "type": "function",
-        "name": "animation",
-        "code": "\n    @return 'ok'\n",
+        "type": "css",
+        "name": ":root",
+        "value": "--secondary_3:rgba(203.00000309944153, 223.00000190734863, 144.00000661611557, 1);\n--secondary_2:rgba(143.00000667572021, 173.00000488758087, 136.00000709295273, 1);\n--secondary_1:rgba(127.00000002980232, 156.00000590085983, 150.0000062584877, 1);\n--primary_3:rgba(155.00000596046448, 193.00000369548798, 219.0000021457672, 1);\n--primary_2:rgba(20.000000707805157, 131.00000739097595, 187.00000405311584, 1);\n--primary_1:rgba(0, 102.00000151991844, 153.00000607967377, 1);",
         "line": {
-          "start": 22,
-          "end": 24
+          "start": 3,
+          "end": 10
         }
       },
       "group": [
-        "animations"
+        "colors"
       ],
       "access": "public",
       "file": {
-        "path": "tools/_animations.scss",
-        "name": "_animations.scss"
+        "path": "settings/_colors.scss",
+        "name": "_colors.scss"
       }
     }
   ],
@@ -54,16 +56,16 @@
     {
       "description": "Mixin cuyo objetivo es crear una fuente partiendo de una ruta establecida\n\n",
       "commentRange": {
-        "start": 5,
-        "end": 34
+        "start": 6,
+        "end": 35
       },
       "context": {
         "type": "mixin",
         "name": "font-face",
-        "code": "\n\t$src: null;\n\n\t$extmods: (\n\t\teot: \"?\",\n\t\tsvg: \"#\" + tools.str-replace($name, \" \", \"_\")\n\t);\n\n\t$formats: (\n\t\totf: \"opentype\",\n\t\tttf: \"truetype\"\n\t);\n\n\t@each $ext in $exts {\n\t\t$extmod: if(map.has-key($extmods, $ext), $ext + map.get($extmods, $ext), $ext);\n\t\t$format: if(map.has-key($formats, $ext), map.get($formats, $ext), $ext);\n\t\t$src: append($src, url(string.quote($path + \".\" + $extmod)) format(string.quote($format)), comma);\n\t}\n\n\t@font-face {\n\t\tfont-family: string.quote($name);\n\t\tfont-style: $style;\n\t\tfont-weight: $weight;\n\t\tsrc: $src;\n\t}\n",
+        "code": "\n\t$src: null;\n\n\t$extmods: (\n\t\teot: \"?\",\n\t\tsvg: \"#\" + tools.str-replace($name, \" \", \"_\")\n\t);\n\n\t$formats: (\n\t\totf: \"opentype\",\n\t\tttf: \"truetype\"\n\t);\n\n\t@each $ext in $exts {\n\t\t$extmod: if(map.has-key($extmods, $ext), $ext + map.get($extmods, $ext), $ext);\n\t\t$format: if(map.has-key($formats, $ext), map.get($formats, $ext), $ext);\n\t\t$src: append($src, url(string.quote(settings.$font-path + $name + \".\" + $extmod)) format(string.quote($format)), comma);\n\t}\n\n\t@font-face {\n\t\tfont-family: string.quote($name);\n\t\tfont-style: $style;\n\t\tfont-weight: $weight;\n\t\tsrc: $src;\n\t}\n",
         "line": {
-          "start": 36,
-          "end": 61
+          "start": 37,
+          "end": 62
         }
       },
       "parameter": [
@@ -97,7 +99,7 @@
       "example": [
         {
           "type": "scss",
-          "code": "@include font-face(\"Helvetica--Neue--35\", \"fonts/helvetica--neue/HelvNeue35\", 500, normal);"
+          "code": "@include font-face(\"Helvetica--Neue--35\", 500, normal);"
         },
         {
           "type": "css",
@@ -175,10 +177,10 @@
           "context": {
             "type": "mixin",
             "name": "font-face",
-            "code": "\n\t$src: null;\n\n\t$extmods: (\n\t\teot: \"?\",\n\t\tsvg: \"#\" + tools.str-replace($name, \" \", \"_\")\n\t);\n\n\t$formats: (\n\t\totf: \"opentype\",\n\t\tttf: \"truetype\"\n\t);\n\n\t@each $ext in $exts {\n\t\t$extmod: if(map.has-key($extmods, $ext), $ext + map.get($extmods, $ext), $ext);\n\t\t$format: if(map.has-key($formats, $ext), map.get($formats, $ext), $ext);\n\t\t$src: append($src, url(string.quote($path + \".\" + $extmod)) format(string.quote($format)), comma);\n\t}\n\n\t@font-face {\n\t\tfont-family: string.quote($name);\n\t\tfont-style: $style;\n\t\tfont-weight: $weight;\n\t\tsrc: $src;\n\t}\n",
+            "code": "\n\t$src: null;\n\n\t$extmods: (\n\t\teot: \"?\",\n\t\tsvg: \"#\" + tools.str-replace($name, \" \", \"_\")\n\t);\n\n\t$formats: (\n\t\totf: \"opentype\",\n\t\tttf: \"truetype\"\n\t);\n\n\t@each $ext in $exts {\n\t\t$extmod: if(map.has-key($extmods, $ext), $ext + map.get($extmods, $ext), $ext);\n\t\t$format: if(map.has-key($formats, $ext), map.get($formats, $ext), $ext);\n\t\t$src: append($src, url(string.quote(settings.$font-path + $name + \".\" + $extmod)) format(string.quote($format)), comma);\n\t}\n\n\t@font-face {\n\t\tfont-family: string.quote($name);\n\t\tfont-style: $style;\n\t\tfont-weight: $weight;\n\t\tsrc: $src;\n\t}\n",
             "line": {
-              "start": 36,
-              "end": 61
+              "start": 37,
+              "end": 62
             }
           }
         }
@@ -195,11 +197,11 @@
       "context": {
         "type": "variable",
         "name": "breakpoints",
-        "value": "(\n  sm: (\n    gutter:30px,\n    offset:50px,\n    columns:4,\n    width:360px\n  ),\n  md: (\n    gutter:30px,\n    offset:50px,\n    columns:6,\n    width:768px\n  ),\n  lg: (\n    gutter:30px,\n    offset:50px,\n    columns:12,\n    width:1440px\n  ),\n  xlg: (\n    gutter:30px,\n    offset:50px,\n    columns:12,\n    width:1920px\n  ),\n  xxlg: (\n    gutter:30px,\n    offset:50px,\n    columns:12,\n    width:1920px\n  ),\n)",
+        "value": "(\n              sm:(\n          gutter:30px,\n          offset:50px,\n          columns:4,\n          width:360px\n        ),md:(\n          gutter:30px,\n          offset:50px,\n          columns:6,\n          width:768px\n        ),lg:(\n          gutter:30px,\n          offset:50px,\n          columns:12,\n          width:1440px\n        ),\n          )",
         "scope": "private",
         "line": {
           "start": 4,
-          "end": 35
+          "end": 21
         }
       },
       "type": "map",
@@ -208,8 +210,8 @@
       ],
       "access": "public",
       "file": {
-        "path": "settings/_grid.scss",
-        "name": "_grid.scss"
+        "path": "settings/_breakpoints.scss",
+        "name": "_breakpoints.scss"
       },
       "usedBy": [
         {
@@ -290,6 +292,114 @@
     }
   ],
   "media-queries": [
+    {
+      "description": "Mixin cuyo objetivo es crear la media-query en base a los puntos de corte establecidos en el fichero de configuración\n\n\n",
+      "commentRange": {
+        "start": 1,
+        "end": 25
+      },
+      "context": {
+        "type": "mixin",
+        "name": "screen-sm",
+        "code": "\n            @media only screen and (min-width: [object Object]) {\n              @content\n            }\n          ",
+        "line": {
+          "start": 26,
+          "end": 30
+        }
+      },
+      "example": [
+        {
+          "type": "scss",
+          "code": ".test{\n   width: 100%;\n   @include screen-sm(){\n     width: auto;\n   }\n}"
+        },
+        {
+          "type": "css",
+          "code": ".test {\n   width: 100%;\n }\n\n@media only screen and (min-width: [object Object]) {\n   .test {\n     width: auto;\n   }\n}"
+        }
+      ],
+      "group": [
+        "media-queries"
+      ],
+      "access": "public",
+      "content": "",
+      "require": [],
+      "file": {
+        "path": "settings/_media-queries.scss",
+        "name": "_media-queries.scss"
+      }
+    },
+    {
+      "description": "Mixin cuyo objetivo es crear la media-query en base a los puntos de corte establecidos en el fichero de configuración\n\n\n",
+      "commentRange": {
+        "start": 31,
+        "end": 55
+      },
+      "context": {
+        "type": "mixin",
+        "name": "screen-md",
+        "code": "\n            @media only screen and (min-width: [object Object]) {\n              @content\n            }\n          ",
+        "line": {
+          "start": 56,
+          "end": 60
+        }
+      },
+      "example": [
+        {
+          "type": "scss",
+          "code": ".test{\n   width: 100%;\n   @include screen-md(){\n     width: auto;\n   }\n}"
+        },
+        {
+          "type": "css",
+          "code": ".test {\n   width: 100%;\n }\n\n@media only screen and (min-width: [object Object]) {\n   .test {\n     width: auto;\n   }\n}"
+        }
+      ],
+      "group": [
+        "media-queries"
+      ],
+      "access": "public",
+      "content": "",
+      "require": [],
+      "file": {
+        "path": "settings/_media-queries.scss",
+        "name": "_media-queries.scss"
+      }
+    },
+    {
+      "description": "Mixin cuyo objetivo es crear la media-query en base a los puntos de corte establecidos en el fichero de configuración\n\n\n",
+      "commentRange": {
+        "start": 61,
+        "end": 85
+      },
+      "context": {
+        "type": "mixin",
+        "name": "screen-lg",
+        "code": "\n            @media only screen and (min-width: [object Object]) {\n              @content\n            }\n          ",
+        "line": {
+          "start": 86,
+          "end": 90
+        }
+      },
+      "example": [
+        {
+          "type": "scss",
+          "code": ".test{\n   width: 100%;\n   @include screen-lg(){\n     width: auto;\n   }\n}"
+        },
+        {
+          "type": "css",
+          "code": ".test {\n   width: 100%;\n }\n\n@media only screen and (min-width: [object Object]) {\n   .test {\n     width: auto;\n   }\n}"
+        }
+      ],
+      "group": [
+        "media-queries"
+      ],
+      "access": "public",
+      "content": "",
+      "require": [],
+      "file": {
+        "path": "settings/_media-queries.scss",
+        "name": "_media-queries.scss"
+      }
+    },
     {
       "description": "Mixin cuyo objetivo es crear la media-query en base a los puntos de corte establecidos en el fichero de configuración\n\n\n",
       "commentRange": {
@@ -481,7 +591,7 @@
       "context": {
         "type": "variable",
         "name": "spacing",
-        "value": "(\n      increase:5,\n      limit:20\n  )",
+        "value": "(\n          increase:5,\n          limit:20\n      )",
         "scope": "private",
         "line": {
           "start": 4,

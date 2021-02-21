@@ -50,7 +50,7 @@
 	@each $ext in $exts {
 		$extmod: if(map.has-key($extmods, $ext), $ext + map.get($extmods, $ext), $ext);
 		$format: if(map.has-key($formats, $ext), map.get($formats, $ext), $ext);
-		$src: append($src, url(string.quote(settings.$font-path + "." + $extmod)) format(string.quote($format)), comma);
+		$src: append($src, url(string.quote(settings.$font-path + $name + "." + $extmod)) format(string.quote($format)), comma);
 	}
 
 	@font-face {
@@ -62,4 +62,4 @@
 }
 
 
-@include font-face("Helvetica--Neue--35", "fonts/helvetica--neue/HelvNeue35", 500, normal);
+@include font-face("Helvetica--Neue--35", 500, normal);

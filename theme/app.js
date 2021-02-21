@@ -6,6 +6,7 @@ const [express, exphbs, sassdoc, fs, path] = [
   require("path")
 ];
 const app = express();
+const port = 3000;
 const publicPath = path.resolve(__dirname, "public");
 
 app.engine(
@@ -19,8 +20,8 @@ app.engine(
 
 app.set("view engine", "hbs");
 app.use(express.static(publicPath));
-app.listen(3000, () => {
-  console.log("The web server has started on port 3000");
+app.listen(port, () => {
+  console.log(`The web server has started on port ${port}`);
 });
 
 const groupData = (array) => {
@@ -57,10 +58,10 @@ const createKeyFrames = (array) => {
 };
 
 sassdoc
-  .parse(`${__dirname}/../sass/**/*.scss`, { verbose: true })
+  .parse(`${__dirname}/../library/web/**/*.scss`, { verbose: true })
   .then(function (data) {
     app.get("/", (req, res) => {
-      // fs.writeFile('doc.json',JSON.stringify(groupData(data),null,2),() => true);
+      fs.writeFile('doc.json',JSON.stringify(groupData(data),null,2),() => true);
       createKeyFrames(data);
       res.render(__dirname + "/views/layouts/main", {
         posts: groupData(data)
