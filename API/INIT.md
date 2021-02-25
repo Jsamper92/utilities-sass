@@ -1,5 +1,5 @@
 ### FRONTECH LIBRARY
-Frontech Library tiene como objetivo aportar una serie de utilidades comunes al inicio de cualquier proyecto front asi como determinados mixin que faciliten el desarrollo del dia a dia como puede ser clases de margin,padding,grid, animaciones base y elementos comunes. Para más información lanzar el comando ```npm run start``` y acceder a la documentación en el navegador bajo el puerto ```http://localhost:3000/```.
+Frontech Library tiene como objetivo aportar una serie de utilidades comunes al inicio de cualquier proyecto front asi como determinados mixin que faciliten el desarrollo del dia a dia como puede ser clases de margin, padding, grid, animaciones base y elementos comunes. Para más información lanzar el comando ```npm run start``` y acceder a la documentación en el navegador bajo el puerto ```http://localhost:3000/```.
 
 Para el correcto funcionamiento de la libreria es preciso crear un archivo de configuración en el proyecto llamado ```.frontech.json```, el cual determinara las utilidades de margin, padding y grid custom. Dicha configuración debe mantener la siguiente estructura:
 ```
@@ -30,7 +30,81 @@ Para el correcto funcionamiento de la libreria es preciso crear un archivo de co
       "type": "color"
     }
   },
-  "breakpoints": {
+  "typography": {
+    "Helvetica--Neue--35": {
+      "family": {
+        "value": "helvetica--Neue--35",
+        "type": "typography"
+      },
+      "weight": {
+        "value": 400,
+        "type": "typography"
+      },
+      "style":{
+        "value":"normal",
+        "type":"typography"
+      }
+    },
+    "Helvetica--Neue--55": {
+      "family": {
+        "value": "helvetica--Neue--55",
+        "type": "typography"
+      },
+      "weight": {
+        "value": 400,
+        "type": "typography"
+      },
+      "style":{
+        "value":"normal",
+        "type":"typography"
+      }
+    },
+    "Lato-regular": {
+      "family": {
+        "value": "lato-regular",
+        "type": "typography"
+      },
+      "weight": {
+        "value": 400,
+        "type": "typography"
+      },
+      "style":{
+        "value":"normal",
+        "type":"typography"
+      }
+    },
+    "Gotham-italic": {
+      "family": {
+        "value": "gotham-italic",
+        "type": "typography"
+      },
+      "weight": {
+        "value": 300,
+        "type": "typography"
+      },
+      "style":{
+        "value":"italic",
+        "type":"typography"
+      }
+    },
+    "icomoon": {
+      "family": {
+        "value": "icomoon",
+        "input": "assets/icons",
+        "output": "assets/fonts",
+        "type": "typography"
+      },
+      "weight": {
+        "value": "normal",
+        "type": "typography"
+      },
+      "style":{
+        "value":"normal",
+        "type":"typography"
+      }
+    }
+  },
+  "grid": {
     "sm": {
       "gutter": {
         "value": "30px",
@@ -87,15 +161,15 @@ Para el correcto funcionamiento de la libreria es preciso crear un archivo de co
     }
   },
   "spacing":{
-      "increase":{
-          "value": 5,
-          "type":"spacing"
-      },
-      "limit": {
-          "value": 20,
-          "type":"spacing"
-      }
-  }
+    "increase":{
+        "value": 5,
+        "type":"spacing"
+    },
+    "limit": {
+        "value": 20,
+        "type":"spacing"
+    }
+}
 }
 ```
 

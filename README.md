@@ -1,5 +1,5 @@
 ### FRONTECH LIBRARY
-Frontech Library tiene como objetivo aportar una serie de utilidades comunes al inicio de cualquier proyecto front asi como determinados mixin que faciliten el desarrollo del dia a dia como puede ser clases de margin,padding,grid, animaciones base y elementos comunes. Para más información lanzar el comando ```npm run start``` y acceder a la documentación en el navegador bajo el puerto ```http://localhost:3000/```.
+Frontech Library tiene como objetivo aportar una serie de utilidades comunes al inicio de cualquier proyecto front asi como determinados mixin que faciliten el desarrollo del dia a dia como puede ser clases de margin, padding, grid, animaciones base y elementos comunes. Para más información lanzar el comando ```npm run start``` y acceder a la documentación en el navegador bajo el puerto ```http://localhost:3000/```.
 
 Para el correcto funcionamiento de la libreria es preciso crear un archivo de configuración en el proyecto llamado ```.frontech.json```, el cual determinara las utilidades de margin, padding y grid custom. Dicha configuración debe mantener la siguiente estructura:
 ```

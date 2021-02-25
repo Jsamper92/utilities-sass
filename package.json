@@ -28,6 +28,8 @@
   },
   "dependencies": {
     "colors": "^1.4.0",
-    "style-dictionary": "^2.10.2"
+    "log-symbols": "^4.0.0",
+    "style-dictionary": "^2.10.2",
+    "webfont": "^9.0.0"
   }
 }

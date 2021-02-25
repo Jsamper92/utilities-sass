@@ -1,13 +1,79 @@
 #!/usr/bin/env node
-const [fs, utils] = [require("fs"), require("./.frontech/utils")];
+
+const [fs, utils, symbols,webfont] = [
+  require("fs"),
+  require("./.frontech/utils"),
+  require("log-symbols"),
+  require("webfont").default
+];
+icons = "";
 let indexItems = 0;
 const pathSettings = `${__dirname}/library/web`;
+
 const fileConfig = process.argv.filter((file) =>
   /.frontech.json/.test(file) ? file : null
 );
 const data = JSON.parse(
   fs.readFileSync(`${process.cwd()}/${fileConfig}`).toString()
 );
+const generateIconFont = async (svg) => {
+  try {
+    const { name, input, output } = svg;
+    webfont({
+      files: `${process.cwd()}/${input}/*.svg`,
+      fontName: name,
+      template: "scss",
+      dest: `${__dirname}/library/web/settings/_icons.scss`,
+      templateClassName: "icon",
+      templateFontPath: "#{$font-path}",
+      fontWeight: 800
+    })
+      .then((result) => {
+        const file = (folder, file, data) => {
+          utils.createFile(folder, file, data);
+          console.log(`${symbols.success}  ${folder}/${file}`);
+        };
+        console.log('\nCreación fuente icónica')
+        file(
+          `${__dirname}/library/web/settings`,
+          `_icons.scss`,
+          result.template
+        );
+        file(
+          `${process.cwd()}/${output}`,
+          `${result.config.fontName}.svg`,
+          result.svg
+        );
+        file(
+          `${process.cwd()}/${output}`,
+          `${result.config.fontName}.ttf`,
+          result.ttf
+        );
+        file(
+          `${process.cwd()}/${output}`,
+          `${result.config.fontName}.eot`,
+          result.eot
+        );
+        file(
+          `${process.cwd()}/${output}`,
+          `${result.config.fontName}.woff`,
+          result.woff
+        );
+
+        utils.printMessage("Proceso de creación de settings finalizado");
+      })
+      .catch((error) => {
+        console.log(error)
+        throw error(error);
+      });
+  } catch {
+    fs.writeFile(
+      `${__dirname}/library/web/settings/_icons.scss`,
+      "// Para generar la fuente icónica, revisa el fichero de configuración.",
+      () => true
+    );
+  }
+};
 const StyleDictionary = require("style-dictionary").extend({
   source: [".frontech.json"],
   platforms: {
@@ -26,7 +92,14 @@ const StyleDictionary = require("style-dictionary").extend({
           destination: "settings/_typography.scss",
           format: "custom/properties-typography",
           filter: {
-            type: "typography"
+            type: "typography",
+          }
+        },
+        {
+          destination: "settings/_icons.scss",
+          format: "custom/properties-icons",
+          filter: {
+            type: "icons",
           }
         },
         {
@@ -58,7 +131,10 @@ const StyleDictionary = require("style-dictionary").extend({
       files: [
         {
           destination: "tokens.colors.xml",
-          format: "android/colors"
+          format: "android/colors",
+          filter: {
+            type: "color"
+          }
         }
       ]
     },
@@ -102,7 +178,7 @@ StyleDictionary.registerFormat({
             );`;
     } catch {
       utils.errorConsole(
-        "No se ha especificado ninguna configuración de las utilidades de grid. El archivo se creará sin contenido. Por favor revisa el fichero de configuración .frontech.json."
+        `${symbols.error}  No se ha especificado ninguna configuración de las utilidades de grid. El archivo se creará sin contenido. Por favor revisa el fichero de configuración .frontech.json.`
       );
       return "";
     }
@@ -127,7 +203,7 @@ StyleDictionary.registerFormat({
       return result;
     } catch {
       utils.errorConsole(
-        "No se ha especificado ninguna configuración de las utilidades de grid. El archivo se creará sin contenido. Por favor revisa el fichero de configuración .frontech.json."
+        `${symbols.error}  No se ha especificado ninguna configuración de las utilidades de grid. El archivo se creará sin contenido. Por favor revisa el fichero de configuración .frontech.json.`
       );
       return "";
     }
@@ -147,7 +223,7 @@ StyleDictionary.registerFormat({
       `;
     } catch {
       utils.errorConsole(
-        "No se ha especificado ninguna configuración de las utilidades de espacio. El archivo se creará sin contenido. Por favor revisa el fichero de configuración .frontech.json."
+        `${symbols.error}  No se ha especificado ninguna configuración de las utilidades de espacio. El archivo se creará sin contenido. Por favor revisa el fichero de configuración .frontech.json.`
       );
       return "";
     }
@@ -157,16 +233,16 @@ StyleDictionary.registerFormat({
   name: "custom/properties-color",
   formatter: (dictionary) => {
     try {
-      let key = Object.keys(dictionary.properties.colors);
+      let key = Object.keys(dictionary.properties.color);
       let customProperties = "\n";
       key.forEach((item) => {
-        value = dictionary.properties.colors[item];
+        value = dictionary.properties.color[item];
         customProperties += `--${item}:${value.value};\n`;
       });
       return `/// Variables de color definida en el archivo .frontech.json\n///@group colors\n:root{${customProperties}};`;
     } catch {
       utils.errorConsole(
-        "No se ha especificado ninguna configuración de las colores. El archivo se creará sin contenido. Por favor revisa el fichero de configuración .frontech.json."
+        `${symbols.error}  No se ha especificado ninguna configuración de las colores. El archivo se creará sin contenido. Por favor revisa el fichero de configuración .frontech.json.`
       );
       return "";
     }
@@ -175,25 +251,56 @@ StyleDictionary.registerFormat({
 
 StyleDictionary.registerFormat({
   name: "custom/properties-typography",
-  formatter: (dictionary) => {
+  formatter: (dictionary,config) => {
     try {
       let key = Object.keys(dictionary.properties.typography);
       let fonts = "";
       let customProperties = "";
+
       key.forEach((font) => {
         value = dictionary.properties.typography[font];
         fonts += `\n${font}: (\nname:${value.family.value},\nweight:${value.weight.value},\nstyle:${value.style.value}\n),`;
         customProperties += `--${font}:${value.family.value};\n`;
       });
       return `/// Mapa de fuentes definida en el archivo .frontech.json\n///@group fonts\n$fonts:(${fonts});\n\n/// Custom properties cuyo valor es el nombre aportado en el fichero .frontech.json\n/// @group fonts\n:root{\n${customProperties}};`;
-    } catch {
+    } catch (error) {
       utils.errorConsole(
-        "No se ha especificado ninguna configuración de tipografias. El archivo se creará sin contenido. Por favor revisa el fichero de configuración .frontech.json."
+        `${symbols.error}  No se ha especificado ninguna configuración de tipografias. El archivo se creará sin contenido. Por favor revisa el fichero de configuración .frontech.json.`
       );
       return "";
     }
   }
 });
+StyleDictionary.registerFormat({
+  name: "custom/properties-icons",
+  formatter: (dictionary,config) => {
+    try {
+      let key = Object.keys(dictionary.properties.typography);
+      let icon;
+
+      key.forEach((font) => {
+        value = dictionary.properties.typography[font];
+        value.family.input && value.family.output
+          ? (icon = {
+              name: font,
+              input: value.family.input,
+              output: value.family.output
+            })
+          : utils.warningConsole(
+              `${symbols.warning}  Revisa el archivo de configuración. Para la creación de la fuente icónica has introducido la ruta origen ${value.family.input} y la ruta de salida ${value.family.output}`
+            );
+      });
+      generateIconFont(icon);
+      return '';
+    } catch (error) {
+      utils.errorConsole(
+        `${symbols.error}  No se ha especificado ninguna configuración de fuente icónica. El archivo se creará sin contenido. Por favor revisa el fichero de configuración .frontech.json.`
+      );
+      return "";
+    }
+  }
+});
+
 
 utils.printMessage("Proceso de creación de settings iniciado");
 
@@ -211,8 +318,6 @@ if (Object.keys(data).length == indexItems) {
   utils.createFile(
     `${pathSettings}/settings`,
     "settings.scss",
-    `@forward 'general';\n@forward 'media-queries';\n${partials}`
+    `@forward 'general';\n@forward 'icons';\n@forward 'media-queries';\n${partials}`
   );
 }
-
-utils.printMessage("Proceso de creación de settings finalizado");

@@ -3,7 +3,7 @@
 // tokens.h
 //
 // Do not edit directly
-// Generated on Sun, 21 Feb 2021 20:30:03 GMT
+// Generated on Thu, 25 Feb 2021 19:14:09 GMT
 //
 
 #import <Foundation/Foundation.h>
@@ -11,12 +11,12 @@
 
 
 
-#define ColorsSecondary3 rgba(203.00000309944153, 223.00000190734863, 144.00000661611557, 1)
-#define ColorsSecondary2 rgba(143.00000667572021, 173.00000488758087, 136.00000709295273, 1)
-#define ColorsSecondary1 rgba(127.00000002980232, 156.00000590085983, 150.0000062584877, 1)
-#define ColorsPrimary3 rgba(155.00000596046448, 193.00000369548798, 219.0000021457672, 1)
-#define ColorsPrimary2 rgba(20.000000707805157, 131.00000739097595, 187.00000405311584, 1)
-#define ColorsPrimary1 rgba(0, 102.00000151991844, 153.00000607967377, 1)
+#define ColorSecondary3 [UIColor colorWithRed:0.796f green:0.875f blue:0.565f alpha:1.000f]
+#define ColorSecondary2 [UIColor colorWithRed:0.561f green:0.678f blue:0.533f alpha:1.000f]
+#define ColorSecondary1 [UIColor colorWithRed:0.498f green:0.612f blue:0.588f alpha:1.000f]
+#define ColorPrimary3 [UIColor colorWithRed:0.608f green:0.757f blue:0.859f alpha:1.000f]
+#define ColorPrimary2 [UIColor colorWithRed:0.078f green:0.514f blue:0.733f alpha:1.000f]
+#define ColorPrimary1 [UIColor colorWithRed:0.000f green:0.400f blue:0.600f alpha:1.000f]
 #define TypographyHelveticaNeue35Family helvetica--Neue--35
 #define TypographyHelveticaNeue35Weight 400
 #define TypographyHelveticaNeue35Style normal
@@ -29,6 +29,9 @@
 #define TypographyGothamItalicFamily gotham-italic
 #define TypographyGothamItalicWeight 300
 #define TypographyGothamItalicStyle italic
+#define TypographyIcomoonFamily icomoon
+#define TypographyIcomoonWeight normal
+#define TypographyIcomoonStyle normal
 #define GridSmGutter 30px
 #define GridSmOffset 50px
 #define GridSmColumns 4
