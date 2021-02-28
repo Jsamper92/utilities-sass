@@ -51,7 +51,7 @@ try {
           partials,
           () => true
         );
-        console.log("\nCreación fuente icónica");
+        console.log(`\ncreación fuente icónica en base a los archivos svg de la ruta ${input}`);
         file(
           `${__dirname}/library/web/utilities`,
           `_icons.scss`,
@@ -79,8 +79,8 @@ try {
         );
         utils.printMessage("Proceso de creación de settings finalizado");
       })
-      .catch((error) => {
-        console.log(error);
+      .catch(() => {
+        utils.errorConsole(`\nRevisa el fichero de configuración, has establecido la siguiente información:\n\n${JSON.stringify(svg,'',2)}`);
       });
   };
   const StyleDictionary = require("style-dictionary").extend({
@@ -273,7 +273,7 @@ try {
         return `/// Variables de color definida en el archivo .frontech.json\n///@group colors\n:root{${customProperties}};`;
       } catch {
         utils.errorConsole(
-          `${symbols.error}  No se ha especificado ninguna configuración de las colores. El archivo se creará sin contenido. Por favor revisa el fichero de configuración .frontech.json.`
+          `${symbols.error}  No se ha especificado ninguna configuración de colores. El archivo se creará sin contenido. Por favor revisa el fichero de configuración .frontech.json.`
         );
         return "// Para generar las custom properties de colores, revisa el fichero de configuración .frontech.json";
       }
