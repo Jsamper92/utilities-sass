@@ -1,6 +1,6 @@
 {
   "name": "frontech-library",
-  "version": "2.5.0",
+  "version": "2.9.0",
   "description": "Libreria de utilidades sass ",
   "main": "index.js",
   "bin": {

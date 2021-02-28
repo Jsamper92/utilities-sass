@@ -4,7 +4,7 @@ Frontech Library tiene como objetivo aportar una serie de utilidades comunes al 
 Para el correcto funcionamiento de la libreria es preciso crear un archivo de configuración en el proyecto llamado ```.frontech.json```, el cual determinara las utilidades de margin, padding y grid custom. Dicha configuración debe mantener la siguiente estructura:
 ```
 {
-  "colors": {
+  "color": {
     "secondary_3": {
       "value": "rgba(203.00000309944153, 223.00000190734863, 144.00000661611557, 1)",
       "type": "color"

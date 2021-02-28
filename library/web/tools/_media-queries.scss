@@ -16,19 +16,19 @@
 ///         width: 100%;
 ///       }
 ///
-///      @media only screen and (min-width: 360px) {
+///      @media only screen and (min-width: [object Object]) {
 ///         .test {
 ///           width: auto;
 ///         }
 ///      }
 ///
-/// @group media-queries
-      @mixin screen-sm{
-        @media only screen and (min-width: 360px) {
-          @content
-        }
-      };
-    /// Mixin cuyo objetivo es crear la media-query en base a los puntos de corte establecidos en el fichero de configuración
+/// @group media-queries 
+@mixin screen-sm{
+                @media only screen and (min-width: [object Object]) {
+                  @content
+                }
+              };
+/// Mixin cuyo objetivo es crear la media-query en base a los puntos de corte establecidos en el fichero de configuración
 ///
 ///
 /// @example scss
@@ -46,19 +46,19 @@
 ///         width: 100%;
 ///       }
 ///
-///      @media only screen and (min-width: 768px) {
+///      @media only screen and (min-width: [object Object]) {
 ///         .test {
 ///           width: auto;
 ///         }
 ///      }
 ///
-/// @group media-queries
-      @mixin screen-md{
-        @media only screen and (min-width: 768px) {
-          @content
-        }
-      };
-    /// Mixin cuyo objetivo es crear la media-query en base a los puntos de corte establecidos en el fichero de configuración
+/// @group media-queries 
+@mixin screen-md{
+                @media only screen and (min-width: [object Object]) {
+                  @content
+                }
+              };
+/// Mixin cuyo objetivo es crear la media-query en base a los puntos de corte establecidos en el fichero de configuración
 ///
 ///
 /// @example scss
@@ -76,76 +76,15 @@
 ///         width: 100%;
 ///       }
 ///
-///      @media only screen and (min-width: 1440px) {
+///      @media only screen and (min-width: [object Object]) {
 ///         .test {
 ///           width: auto;
 ///         }
 ///      }
 ///
-/// @group media-queries
-      @mixin screen-lg{
-        @media only screen and (min-width: 1440px) {
-          @content
-        }
-      };
-    /// Mixin cuyo objetivo es crear la media-query en base a los puntos de corte establecidos en el fichero de configuración
-///
-///
-/// @example scss
-///
-///      .test{
-///         width: 100%;
-///         @include screen-xlg(){
-///           width: auto;
-///         }
-///      }
-///
-/// @example css
-///
-///      .test {
-///         width: 100%;
-///       }
-///
-///      @media only screen and (min-width: 1920px) {
-///         .test {
-///           width: auto;
-///         }
-///      }
-///
-/// @group media-queries
-      @mixin screen-xlg{
-        @media only screen and (min-width: 1920px) {
-          @content
-        }
-      };
-    /// Mixin cuyo objetivo es crear la media-query en base a los puntos de corte establecidos en el fichero de configuración
-///
-///
-/// @example scss
-///
-///      .test{
-///         width: 100%;
-///         @include screen-xxlg(){
-///           width: auto;
-///         }
-///      }
-///
-/// @example css
-///
-///      .test {
-///         width: 100%;
-///       }
-///
-///      @media only screen and (min-width: 1920px) {
-///         .test {
-///           width: auto;
-///         }
-///      }
-///
-/// @group media-queries
-      @mixin screen-xxlg{
-        @media only screen and (min-width: 1920px) {
-          @content
-        }
-      };
-    
+/// @group media-queries 
+@mixin screen-lg{
+                @media only screen and (min-width: [object Object]) {
+                  @content
+                }
+              };
