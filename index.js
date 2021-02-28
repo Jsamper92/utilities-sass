@@ -81,6 +81,11 @@ try {
       })
       .catch(() => {
         utils.errorConsole(`\nRevisa el fichero de configuración, has establecido la siguiente información:\n\n${JSON.stringify(svg,'',2)}`);
+        utils.createFile(
+          `${__dirname}/library/web/utilities`,
+          `_icons.scss`,
+          `// Para generar la fuente icónica, revisa el fichero de configuración .frontech.json`
+        );
       });
   };
   const StyleDictionary = require("style-dictionary").extend({
