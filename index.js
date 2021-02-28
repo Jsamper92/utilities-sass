@@ -6,14 +6,14 @@ const [fs, utils, symbols, webfont] = [
   require("log-symbols"),
   require("webfont").default
 ];
-
-try {
-  let indexItems = 0;
-  const pathSettings = `${__dirname}/library/web`;
-  let grid = [];
-  const fileConfig = process.argv.filter((file) =>
-    /.frontech.json/.test(file) ? file : null
-  );
+let indexItems = 0;
+const pathSettings = `${__dirname}/library/web`;
+let grid = [];
+const fileConfig = process.argv.filter((file) =>
+  /.frontech.json/.test(file) ? file : null
+);
+const existData = fs.existsSync(`${process.cwd()}/${fileConfig}`);
+if (existData) {
   const data = JSON.parse(
     fs.readFileSync(`${process.cwd()}/${fileConfig}`).toString()
   );
@@ -51,7 +51,9 @@ try {
           partials,
           () => true
         );
-        console.log(`\ncreación fuente icónica en base a los archivos svg de la ruta ${input}`);
+        console.log(
+          `\ncreación fuente icónica en base a los archivos svg de la ruta ${input}`
+        );
         file(
           `${__dirname}/library/web/utilities`,
           `_icons.scss`,
@@ -80,7 +82,13 @@ try {
         utils.printMessage("Proceso de creación de settings finalizado");
       })
       .catch(() => {
-        utils.errorConsole(`\nRevisa el fichero de configuración, has establecido la siguiente información:\n\n${JSON.stringify(svg,'',2)}`);
+        utils.errorConsole(
+          `\nRevisa el fichero de configuración, has establecido la siguiente información:\n\n${JSON.stringify(
+            svg,
+            "",
+            2
+          )}`
+        );
         utils.createFile(
           `${__dirname}/library/web/utilities`,
           `_icons.scss`,
@@ -200,16 +208,16 @@ try {
             value.width
           ];
           result += `${layout}:(
-              ${gutter.path[2]}:${gutter.value},
-              ${offset.path[2]}:${offset.value},
-              ${columns.path[2]}:${columns.value},
-              ${width.path[2]}:${width.value}
-            ),`;
+                ${gutter.path[2]}:${gutter.value},
+                ${offset.path[2]}:${offset.value},
+                ${columns.path[2]}:${columns.value},
+                ${width.path[2]}:${width.value}
+              ),`;
         }
 
         return `/// Mapa creado dinamicamente en base al fichero de configuración. Define los puntos de ruptura de los distintos breakpoints\n/// @type map\n/// @group grid \n$breakpoints: (
-                  ${result}
-              );`;
+                    ${result}
+                );`;
       } catch {
         utils.errorConsole(
           `${symbols.error}  No se ha especificado ninguna configuración de las utilidades de grid. El archivo se creará sin contenido. Por favor revisa el fichero de configuración .frontech.json.`
@@ -230,10 +238,10 @@ try {
           layout = value.gutter.attributes.type;
           const [width] = [value.width];
           result += `/// Mixin cuyo objetivo es crear la media-query en base a los puntos de corte establecidos en el fichero de configuración\n///\n///\n/// @example scss\n///\n///      .test{\n///         width: 100%;\n///         @include screen-${key}(){\n///           width: auto;\n///         }\n///      }\n///\n/// @example css\n///\n///      .test {\n///         width: 100%;\n///       }\n///\n///      @media only screen and (min-width: ${width}) {\n///         .test {\n///           width: auto;\n///         }\n///      }\n///\n/// @group media-queries \n@mixin screen-${key}{
-                @media only screen and (min-width: ${width}) {
-                  @content
-                }
-              };\n`;
+                  @media only screen and (min-width: ${width}) {
+                    @content
+                  }
+                };\n`;
         }
 
         return result;
@@ -252,11 +260,11 @@ try {
         const { increase, limit } = dictionary.properties.spacing;
 
         return `/// Mapa creado dinamicamente en base al fichero de configuración. Define los atributos para crear las clases de utilidad de margin y padding\n/// @type number\n/// @group spacing
-          $spacing: (
-              increase:${increase.value},
-              limit:${limit.value}
-          );
-        `;
+            $spacing: (
+                increase:${increase.value},
+                limit:${limit.value}
+            );
+          `;
       } catch {
         utils.errorConsole(
           `${symbols.error}  No se ha especificado ninguna configuración de las utilidades de margin y padding. El archivo se creará sin contenido. Por favor revisa el fichero de configuración .frontech.json.`
@@ -326,14 +334,12 @@ try {
                 `${symbols.warning}  Revisa el archivo de configuración. Para la creación de la fuente icónica has introducido la ruta origen ${value.family.input} y la ruta de salida ${value.family.output}`
               );
         });
-        generateIconFont(icon);
+        generateIconFont(icon)
       } catch (error) {
-        utils.errorConsole(`\nRevisa el fichero de configuración, has establecido la siguiente información:\n\n${JSON.stringify(svg,'',2)}`);
-        utils.createFile(
-          `${__dirname}/library/web/utilities`,
-          `_icons.scss`,
-          `// Para generar la fuente icónica, revisa el fichero de configuración .frontech.json`
+        utils.errorConsole(
+          `${symbols.error}  No se ha especificado ninguna configuración de fuente icónica. El archivo se creará sin contenido. Por favor revisa el fichero de configuración .frontech.json.`
         );
+        return '// Para generar la fuente icónica, revisa el fichero de configuración .frontech.json'
       }
     }
   });
@@ -359,8 +365,8 @@ try {
       `@forward 'general';\n@forward 'media-queries';\n${partials}`
     );
   }
-} catch {
+} else {
   utils.errorConsole(
-    `No se ha especificado ninguna archivo de configuración .frontech.json`
+    `No se ha especificado ningún archivo de configuración .frontech.json`
   );
 }

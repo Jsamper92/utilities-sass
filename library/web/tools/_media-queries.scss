@@ -24,10 +24,10 @@
 ///
 /// @group media-queries 
 @mixin screen-sm{
-                @media only screen and (min-width: [object Object]) {
-                  @content
-                }
-              };
+                  @media only screen and (min-width: [object Object]) {
+                    @content
+                  }
+                };
 /// Mixin cuyo objetivo es crear la media-query en base a los puntos de corte establecidos en el fichero de configuración
 ///
 ///
@@ -54,10 +54,10 @@
 ///
 /// @group media-queries 
 @mixin screen-md{
-                @media only screen and (min-width: [object Object]) {
-                  @content
-                }
-              };
+                  @media only screen and (min-width: [object Object]) {
+                    @content
+                  }
+                };
 /// Mixin cuyo objetivo es crear la media-query en base a los puntos de corte establecidos en el fichero de configuración
 ///
 ///
@@ -84,7 +84,7 @@
 ///
 /// @group media-queries 
 @mixin screen-lg{
-                @media only screen and (min-width: [object Object]) {
-                  @content
-                }
-              };
+                  @media only screen and (min-width: [object Object]) {
+                    @content
+                  }
+                };
