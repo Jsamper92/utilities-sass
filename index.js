@@ -323,11 +323,12 @@ try {
         });
         generateIconFont(icon);
       } catch (error) {
-        utils.errorConsole(
-          `${symbols.error}  No se ha especificado ninguna configuración de fuente icónica. El archivo se creará sin contenido. Por favor revisa el fichero de configuración .frontech.json.`
+        utils.errorConsole(`\nRevisa el fichero de configuración, has establecido la siguiente información:\n\n${JSON.stringify(svg,'',2)}`);
+        utils.createFile(
+          `${__dirname}/library/web/utilities`,
+          `_icons.scss`,
+          `// Para generar la fuente icónica, revisa el fichero de configuración .frontech.json`
         );
-
-        return "// Para generar la fuente icónica, revisa el fichero de configuración .frontech.json";
       }
     }
   });
