@@ -52,7 +52,7 @@ $types: (
       $limit: map.get($spacing, "limit");
       @each $type, $property in $types {
         @for $i from 1 through $limit {
-          $value: string.unquote($i + "px");
+          $value: string.unquote($i*map.get($spacing,increase) + "px");
           .#{$type}-#{$break}-#{$i} {
             #{$property}: $value;
           }

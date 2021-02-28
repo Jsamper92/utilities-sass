@@ -85,7 +85,7 @@ if (existData) {
         utils.errorConsole(
           `\nRevisa el fichero de configuración, has establecido la siguiente información:\n\n${JSON.stringify(
             svg,
-            "",
+            null,
             2
           )}`
         );
