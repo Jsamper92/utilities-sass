@@ -222,7 +222,7 @@ if (existData) {
         utils.errorConsole(
           `${symbols.error}  No se ha especificado ninguna configuración de las utilidades de grid. El archivo se creará sin contenido. Por favor revisa el fichero de configuración .frontech.json.`
         );
-        return "// Para generar la configuración de grid, revisa el fichero de configuración .frontech.json";
+        return "// Para generar la configuración de grid, revisa el fichero de configuración .frontech.json\n$breakpoints:()!default;";
       }
     }
   });
@@ -269,7 +269,7 @@ if (existData) {
         utils.errorConsole(
           `${symbols.error}  No se ha especificado ninguna configuración de las utilidades de margin y padding. El archivo se creará sin contenido. Por favor revisa el fichero de configuración .frontech.json.`
         );
-        return "// Para generar las utilidades de margin y padding, revisa el fichero de configuración .frontech.json";
+        return "// Para generar las utilidades de margin y padding, revisa el fichero de configuración .frontech.json\n$spacing:() !default;";
       }
     }
   });
@@ -311,7 +311,7 @@ if (existData) {
         utils.errorConsole(
           `${symbols.error}  No se ha especificado ninguna configuración de tipografias. El archivo se creará sin contenido. Por favor revisa el fichero de configuración .frontech.json.`
         );
-        return "// Para generar la fuentes de texto, revisa el fichero de configuración .frontech.json";
+        return "// Para generar la fuentes de texto, revisa el fichero de configuración .frontech.json\n$fonts:() !default;";
       }
     }
   });
@@ -351,20 +351,6 @@ if (existData) {
   );
 
   StyleDictionary.buildAllPlatforms();
-  let partials = "";
-  for (const key in data) {
-    indexItems++;
-    if (key !== "global-text" && key !== "icons") {
-      partials += `@forward '${key}';\n`;
-    }
-  }
-  if (Object.keys(data).length == indexItems) {
-    utils.createFile(
-      `${pathSettings}/settings`,
-      "settings.scss",
-      `@forward 'general';\n@forward 'media-queries';\n${partials}`
-    );
-  }
 } else {
   utils.errorConsole(
     `No se ha especificado ningún archivo de configuración .frontech.json`
