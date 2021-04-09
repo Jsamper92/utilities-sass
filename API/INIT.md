@@ -169,10 +169,22 @@ Para el correcto funcionamiento de la libreria es preciso crear un archivo de co
         "value": 20,
         "type":"spacing"
     }
-}
+  },
+  "outputCSS":{
+    "path": "style.css"
+  }
 }
 ```
 
 Para la posible utilización de la libreria simplemente será necesario importar en tu hoja de estilos sass el siguiente archivo:
 
 ```@use '~frontech-library/library/web/abstracts';```
+
+También podemos generar un output css de la libreria especificando en el fichero de configuración la ruta donde queremos exportar dicho archivo:
+
+```
+"outputCSS":{
+    "path": "style.css"
+  }
+```
+

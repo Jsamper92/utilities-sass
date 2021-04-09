@@ -3,7 +3,7 @@
 // tokens.color.h
 //
 // Do not edit directly
-// Generated on Sun, 28 Feb 2021 19:36:39 GMT
+// Generated on Fri, 09 Apr 2021 16:28:02 GMT
 //
 
 #import <Foundation/Foundation.h>

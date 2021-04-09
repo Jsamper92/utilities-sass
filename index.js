@@ -1,13 +1,14 @@
 #!/usr/bin/env node
 
-const [fs, utils, symbols, webfont] = [
+const { Console } = require("console");
+
+const [fs, utils, symbols, webfont, css] = [
   require("fs"),
   require("./.frontech/utils"),
   require("log-symbols"),
-  require("webfont").default
+  require("webfont").default,
+  require("./.frontech/postcss")
 ];
-let indexItems = 0;
-const pathSettings = `${__dirname}/library/web`;
 let grid = [];
 const fileConfig = process.argv.filter((file) =>
   /.frontech.json/.test(file) ? file : null
@@ -17,6 +18,7 @@ if (existData) {
   const data = JSON.parse(
     fs.readFileSync(`${process.cwd()}/${fileConfig}`).toString()
   );
+
   const generateIconFont = async (svg) => {
     const { name, input, output } = svg;
     webfont({
@@ -79,6 +81,7 @@ if (existData) {
           `${result.config.fontName}.woff`,
           result.woff
         );
+        data.outputCSS ? css.buildCSS(data) : null;
         utils.printMessage("Proceso de creación de settings finalizado");
       })
       .catch(() => {
@@ -236,12 +239,8 @@ if (existData) {
         for (const key in dictionary.properties.grid) {
           let value = dictionary.properties.grid[key];
           layout = value.gutter.attributes.type;
-          const [width] = [value.width];
-          result += `/// Mixin cuyo objetivo es crear la media-query en base a los puntos de corte establecidos en el fichero de configuración\n///\n///\n/// @example scss\n///\n///      .test{\n///         width: 100%;\n///         @include screen-${key}(){\n///           width: auto;\n///         }\n///      }\n///\n/// @example css\n///\n///      .test {\n///         width: 100%;\n///       }\n///\n///      @media only screen and (min-width: ${width}) {\n///         .test {\n///           width: auto;\n///         }\n///      }\n///\n/// @group media-queries \n@mixin screen-${key}{
-                  @media only screen and (min-width: ${width}) {
-                    @content
-                  }
-                };\n`;
+          const [width] = [value.width.value];
+          result += `/// Mixin cuyo objetivo es crear la media-query en base a los puntos de corte establecidos en el fichero de configuración\n///\n///\n/// @example scss\n///\n///      .test{\n///         width: 100%;\n///         @include screen-${key}(){\n///           width: auto;\n///         }\n///      }\n///\n/// @example css\n///\n///      .test {\n///         width: 100%;\n///       }\n///\n///      @media only screen and (min-width: ${width}) {\n///         .test {\n///           width: auto;\n///         }\n///      }\n///\n/// @group media-queries \n@mixin screen-${key}{\n   @media only screen and (min-width: ${width}) {\n     @content\n   }\n};\n`;
         }
 
         return result;
@@ -334,12 +333,12 @@ if (existData) {
                 `${symbols.warning}  Revisa el archivo de configuración. Para la creación de la fuente icónica has introducido la ruta origen ${value.family.input} y la ruta de salida ${value.family.output}`
               );
         });
-        generateIconFont(icon)
+        generateIconFont(icon);
       } catch (error) {
         utils.errorConsole(
           `${symbols.error}  No se ha especificado ninguna configuración de fuente icónica. El archivo se creará sin contenido. Por favor revisa el fichero de configuración .frontech.json.`
         );
-        return '// Para generar la fuente icónica, revisa el fichero de configuración .frontech.json'
+        return "// Para generar la fuente icónica, revisa el fichero de configuración .frontech.json";
       }
     }
   });

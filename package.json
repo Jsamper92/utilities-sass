@@ -1,6 +1,6 @@
 {
   "name": "frontech-library",
-  "version": "3.0.5",
+  "version": "3.0.6",
   "description": "Libreria de utilidades sass ",
   "main": "index.js",
   "bin": {
@@ -20,10 +20,15 @@
   "license": "ISC",
   "devDependencies": {
     "@hidoo/sassdoc-to-markdown": "^0.4.2",
+    "autoprefixer": "^10.2.5",
     "concurrently": "^5.3.0",
+    "cssnano": "^4.1.11",
     "express": "^4.17.1",
     "express-handlebars": "^5.2.0",
     "nodemon": "^2.0.7",
+    "postcss": "^8.2.9",
+    "postcss-scss": "^3.0.5",
+    "sass": "^1.32.8",
     "sassdoc": "^2.7.3"
   },
   "dependencies": {

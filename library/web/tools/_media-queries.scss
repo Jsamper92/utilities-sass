@@ -16,7 +16,7 @@
 ///         width: 100%;
 ///       }
 ///
-///      @media only screen and (min-width: [object Object]) {
+///      @media only screen and (min-width: 360px) {
 ///         .test {
 ///           width: auto;
 ///         }
@@ -24,10 +24,10 @@
 ///
 /// @group media-queries 
 @mixin screen-sm{
-                  @media only screen and (min-width: [object Object]) {
-                    @content
-                  }
-                };
+   @media only screen and (min-width: 360px) {
+     @content
+   }
+};
 /// Mixin cuyo objetivo es crear la media-query en base a los puntos de corte establecidos en el fichero de configuración
 ///
 ///
@@ -46,7 +46,7 @@
 ///         width: 100%;
 ///       }
 ///
-///      @media only screen and (min-width: [object Object]) {
+///      @media only screen and (min-width: 768px) {
 ///         .test {
 ///           width: auto;
 ///         }
@@ -54,10 +54,10 @@
 ///
 /// @group media-queries 
 @mixin screen-md{
-                  @media only screen and (min-width: [object Object]) {
-                    @content
-                  }
-                };
+   @media only screen and (min-width: 768px) {
+     @content
+   }
+};
 /// Mixin cuyo objetivo es crear la media-query en base a los puntos de corte establecidos en el fichero de configuración
 ///
 ///
@@ -76,7 +76,7 @@
 ///         width: 100%;
 ///       }
 ///
-///      @media only screen and (min-width: [object Object]) {
+///      @media only screen and (min-width: 1440px) {
 ///         .test {
 ///           width: auto;
 ///         }
@@ -84,7 +84,7 @@
 ///
 /// @group media-queries 
 @mixin screen-lg{
-                  @media only screen and (min-width: [object Object]) {
-                    @content
-                  }
-                };
+   @media only screen and (min-width: 1440px) {
+     @content
+   }
+};
