@@ -180,7 +180,7 @@ Para la posible utilización de la libreria simplemente será necesario importar
 
 ```@use '~frontech-library/library/web/abstracts';```
 
-También podemos generar un output css de la libreria especificando en el fichero de configuración la ruta donde queremos exportar dicho archivo.
+También podemos generar un output css de la libreria especificando en el fichero de configuración la ruta donde queremos exportar dicho archivo:
 
 ```
 "outputCSS":{
@@ -188,57 +188,7 @@ También podemos generar un output css de la libreria especificando en el ficher
   }
 ```
 
- <a id="colors-css-:root"></a>
-
-# css:root
-
- Variables de color definida en el archivo .frontech.json
-
-+ **Group:** Colors
-+ **Access:** public
-
-<a id="fonts-css-:root"></a>
-
-# css:root
-
-Custom properties cuyo valor es el nombre aportado en el fichero .frontech.json
-
-+ **Group:** Fonts
-+ **Access:** public
-
-<a id="fonts-variable-font-path"></a>
-
-# $font-path
-
-Variable path por defecto de las fuentes definidas en el fichero .frontech.json. 
-Para modificar la ruta, simplemente habra que setear la variable en la importación de la siguiente forma: @use 'frontech-library/library/web/abstracts' with($font-path:'public/assets/fonts/');
-
-+ **Group:** Fonts
-+ **Access:** public
-
-<a id="fonts-variable-fonts"></a>
-
-# $fonts
-
- Mapa de fuentes definida en el archivo .frontech.json
-
-+ **Group:** Fonts
-+ **Access:** public
-
-<a id="grid-variable-breakpoints"></a>
-
-# $breakpoints
-
-Mapa creado dinamicamente en base al fichero de configuración. Define los puntos de ruptura de los distintos breakpoints
-
-+ **Group:** Grid
-+ **Access:** public
-
-## Type
-
-**[Map](https://sass-lang.com/documentation/values/maps)**
-
-<a id="media-queries-mixin-screen-sm"></a>
+ <a id="media-queries-mixin-screen-sm"></a>
 
 # @mixin screen-sm
 
@@ -263,7 +213,7 @@ Mixin cuyo objetivo es crear la media-query en base a los puntos de corte establ
    width: 100%;
  }
 
-@media only screen and (min-width: [object Object]) {
+@media only screen and (min-width: 360px) {
    .test {
      width: auto;
    }
@@ -295,7 +245,7 @@ Mixin cuyo objetivo es crear la media-query en base a los puntos de corte establ
    width: 100%;
  }
 
-@media only screen and (min-width: [object Object]) {
+@media only screen and (min-width: 768px) {
    .test {
      width: auto;
    }
@@ -327,22 +277,9 @@ Mixin cuyo objetivo es crear la media-query en base a los puntos de corte establ
    width: 100%;
  }
 
-@media only screen and (min-width: [object Object]) {
+@media only screen and (min-width: 1440px) {
    .test {
      width: auto;
    }
 }
 ```
-
-<a id="spacing-variable-spacing"></a>
-
-# $spacing
-
-Mapa creado dinamicamente en base al fichero de configuración. Define los atributos para crear las clases de utilidad de margin y padding
-
-+ **Group:** Spacing
-+ **Access:** public
-
-## Type
-
-**[Number](https://sass-lang.com/documentation/values/numbers)**
