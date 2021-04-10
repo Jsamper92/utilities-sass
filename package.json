@@ -1,13 +1,13 @@
 {
-  "name": "frontech-library",
-  "version": "3.0.8",
-  "description": "Libreria de utilidades sass ",
+  "name": "design-systems-utils",
+  "version": "1.0.0",
+  "description": "Sass utility library",
   "main": "index.js",
   "bin": {
-    "frontech-library": "./index.js"
+    "design-systems-utils": "./index.js"
   },
   "scripts": {
-    "start": "concurrently 'npm run sass:theme-watch' 'npm run serve'",
+    "start": "sassdoc 'library/web/**/*.scss' && concurrently \"npm run sass:theme-watch\" \"npm run serve\"",
     "serve": "nodemon theme/app.js",
     "sassdoc": "sassdoc2md 'library/web/settings/*.scss' ./README.md -s && sassdoc2md 'library/web/tools/_media-queries.scss' ./README.md -s && node .frontech/readme.js",
     "sass": "sass --no-source-map library/web/abstracts.scss:library/web/abstracts.css",
@@ -15,25 +15,23 @@
     "sass:theme-watch": "sass --watch --no-source-map theme/public/styles/scss/main.scss theme/public/styles/css/style.css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Everis Front Tech Team",
   "license": "ISC",
   "devDependencies": {
     "@hidoo/sassdoc-to-markdown": "^0.4.2",
-    "autoprefixer": "^10.2.5",
     "concurrently": "^5.3.0",
-    "cssnano": "^4.1.11",
     "express": "^4.17.1",
     "express-handlebars": "^5.2.0",
     "nodemon": "^2.0.7",
-    "postcss": "^8.2.9",
-    "postcss-scss": "^3.0.5",
-    "sass": "^1.32.8",
     "sassdoc": "^2.7.3"
   },
   "dependencies": {
     "colors": "^1.4.0",
+    "sass": "^1.32.8",
     "log-symbols": "^4.0.0",
     "style-dictionary": "^2.10.2",
-    "webfont": "^9.0.0"
+    "webfont": "^9.0.0",
+    "autoprefixer": "^10.2.5",
+    "postcss": "^8.2.9"
   }
 }

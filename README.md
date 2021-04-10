@@ -1,7 +1,7 @@
 ### FRONTECH LIBRARY
-Frontech Library tiene como objetivo aportar una serie de utilidades comunes al inicio de cualquier proyecto front asi como determinados mixin que faciliten el desarrollo del dia a dia como puede ser clases de margin, padding, grid, animaciones base y elementos comunes. Para más información lanzar el comando ```npm run start``` y acceder a la documentación en el navegador bajo el puerto ```http://localhost:3000/```.
+Frontech Library aims to provide a series of common utilities at the beginning of any front project as well as certain mixins that facilitate day-to-day development such as margin, padding, grid classes, base animations and common elements. For more information launch the command ```npm run start``` and access the documentation in the browser under the port ```http://localhost:3000/```.
 
-Para el correcto funcionamiento de la libreria es preciso crear un archivo de configuración en el proyecto llamado ```.frontech.json```, el cual determinara las utilidades de margin, padding y grid custom. Dicha configuración debe mantener la siguiente estructura:
+For the proper functioning of the library it is necessary to create a configuration file in the project called ```.frontech.json```, which will determine the utilities of margin, padding and custom grid. This configuration must maintain the following structure:
 ```
 {
   "color": {
@@ -176,11 +176,11 @@ Para el correcto funcionamiento de la libreria es preciso crear un archivo de co
 }
 ```
 
-Para la posible utilización de la libreria simplemente será necesario importar en tu hoja de estilos sass el siguiente archivo:
+To use the library, it will simply be necessary to import the following file into your sass stylesheet:
 
 ```@use '~frontech-library/library/web/abstracts';```
 
-También podemos generar un output css de la libreria especificando en el fichero de configuración la ruta donde queremos exportar dicho archivo:
+We can also generate a css output of the library specifying in the configuration file the path where we want to export said file:
 
 ```
 "outputCSS":{
@@ -192,7 +192,7 @@ También podemos generar un output css de la libreria especificando en el ficher
 
 # @mixin screen-sm
 
-Mixin cuyo objetivo es crear la media-query en base a los puntos de corte establecidos en el fichero de configuración
+Mixin whose objective is to create the media-query based on the cut points established in the configuration file
 
 + **Group:** Media-queries
 + **Access:** public
@@ -224,7 +224,7 @@ Mixin cuyo objetivo es crear la media-query en base a los puntos de corte establ
 
 # @mixin screen-md
 
-Mixin cuyo objetivo es crear la media-query en base a los puntos de corte establecidos en el fichero de configuración
+Mixin whose objective is to create the media-query based on the cut points established in the configuration file
 
 + **Group:** Media-queries
 + **Access:** public
@@ -256,7 +256,7 @@ Mixin cuyo objetivo es crear la media-query en base a los puntos de corte establ
 
 # @mixin screen-lg
 
-Mixin cuyo objetivo es crear la media-query en base a los puntos de corte establecidos en el fichero de configuración
+Mixin whose objective is to create the media-query based on the cut points established in the configuration file
 
 + **Group:** Media-queries
 + **Access:** public

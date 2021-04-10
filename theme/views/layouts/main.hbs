@@ -3,15 +3,15 @@
 <head>
     <!-- <meta> tags> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Frontech Library</title>
-    <link rel="stylesheet" type="text/css" href="styles/css/style.css">
+    <title>Design Systems Utils</title>
+    <link rel="stylesheet" type="text/css" href="./styles/css/style.css">
 
 </head>
 
 <body>
     <header class="header">
 
-        <h1 class="header__title">Frontech-library</h1>
+        <h1 class="header__title">Design Systems Utils</h1>
 
     </header>
     <div class="container">
@@ -21,13 +21,13 @@
                     <fieldset class="nav__fieldset">
                         <legend class="nav__legend">Search</legend>
                         <label for="search" class="nav__label"></label>
-                        <input id="search" type="text" class="nav__input" placeholder="Search">
+                        <input id="search" type="text" autocomplete="off" class="nav__input" placeholder="Search">
                     </fieldset>
                 </div>
                 <div class="nav__body">
                     <div class="nav__subsection">
                         <h3 class="nav__title">
-                            <a href="#configuration">Frontech</a>
+                            <a href="#configuration">Design Systems Utils</a>
                         </h3>
                         <ul>
                             <li class="nav__item">
@@ -75,17 +75,16 @@
         <main class="main">
             <div class="indice" id="configuration">
                 <div class="indice__body">
-                    <h3 class="indice__title">FRONTECH LIBRARY</h3>
-                    <p>Frontech Library tiene como objetivo aportar una serie de utilidades comunes al inicio de
-                        cualquier proyecto front asi como determinados mixin que faciliten el desarrollo del dia a dia
-                        como puede ser clases de margin,padding,grid, animaciones base y elementos comunes. Para más
-                        información lanzar el comando <code>npm run start</code> y acceder a la documentación en el navegador
-                        bajo el puerto <code>http://localhost:3000/</code>.</p>
-                    <p>Para el correcto funcionamiento de la libreria es preciso crear un archivo de configuración en el
-                        proyecto llamado <code>.frontech.json</code>, el cual determinara las utilidades de margin,
-                        padding
-                        y
-                        grid custom. Dicha configuración debe mantener la siguiente estructura:</p>
+                    <h3 class="indice__title">DESIGN SYSTEMS UTILS</h3>
+                    <p>Design Systems Utils aims to provide a series of common utilities at the beginning of any front
+                        project as well as certain mixins that facilitate day-to-day development such as margin,
+                        padding, grid classes, base animations and common elements. For more information launch the
+                        command <code>npm run start</code> and access the documentation in the browser under the port
+                        <code>http://localhost:3000/</code>.
+                    </p>
+                    <p>For the correct functioning of the library it is necessary to create a configuration file in the
+                        project called <code>.frontech.json</code>, which will determine the utilities of margin,
+                        padding and custom grid. This configuration must maintain the following structure:</p>
                     <pre>
                 <code>
 {
@@ -187,13 +186,14 @@
 }
                 </code>
         </pre>
-                    <p>Para la posible utilización de la libreria simplemente será necesario importar en tu hoja de
-                        estilos
-                        sass
-                        el siguiente archivo:</p>
-                    <p><code>@use '~frontech-library/sass/abstracts.scss';</code></p>
+                    <p>To use the library, it will simply be necessary to import the following file into your sass
+                        stylesheet:
+                    </p>
+                    <p><code>@use '~frontech-library/sass/abstracts.scss' with ($font-path:'public/assets/fonts/'); ;</code></p>
 
-                    <p>También podemos generar un output css de la libreria especificando en el fichero de configuración la ruta donde queremos exportar dicho archivo:</p>
+                    <p>We can also generate a css output of the library specifying in the configuration file the path
+                        where we want to export said file:
+                    </p>
                     <p><code>"outputCSS":{<br/>
                             "path": "style.css"<br/>
                         }</code></p>
@@ -222,6 +222,13 @@
                                     <span>${{this.context.type}}</span>
                                     <span>{{this.context.name}}(</span>
                                     <span>{{#each this.parameter}}{{#if @last}}{{this.name}}{{else}}${{this.name}}, {{/if}}{{/each}}</span>)
+                                    {{else if (isCSS this.context.type)}}
+                                        <span>{{this.context.name}}:{</span>
+                                        {{#if @last}}
+                                        <span>{{this.context.value}} <p>}</p></span>
+                                        {{else}}
+                                        <p>{{this.context.value}}</p>
+                                        {{/if}}
                                     {{else}}
                                     <span>${{this.context.name}}:</span>
                                     <span> {{this.context.value}}</span>
@@ -681,8 +688,7 @@
                         </span>
                     </h3>
                     <div class="section__information">
-                        <div class="section__code-wrapper"
-                            onclick="openCode('functions',{{@index}},'{{this.context.type}}')">
+                        <div class="section__code-wrapper">
                             <pre id="functions-{{@index}}" aria-expanded="false" data-type="{{this.context.type}}">
                                 <span class="section__code-wrapper--title">
                                     {{#if (isMixin this.context.type)}}

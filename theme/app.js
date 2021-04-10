@@ -55,7 +55,7 @@ const createKeyFrames = (array) => {
     () => true
   );
   createImportsUtilities();
-};
+}; 
 
 sassdoc
   .parse(`${__dirname}/../library/web/**/*.scss`, { verbose: true })
@@ -63,8 +63,8 @@ sassdoc
     app.get("/", (req, res) => {
       fs.writeFile('doc.json',JSON.stringify(groupData(data),null,2),() => true);
       createKeyFrames(data);
-      res.render(__dirname + "/views/layouts/main", {
-        posts: groupData(data)
-      });
+        res.render(__dirname + "/views/layouts/main", {
+          posts: groupData(data)
+        });
     });
   });

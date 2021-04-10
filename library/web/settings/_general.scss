@@ -1,4 +1,4 @@
-/// Variable path por defecto de las fuentes definidas en el fichero .frontech.json. 
-/// Para modificar la ruta, simplemente habra que setear la variable en la importación de la siguiente forma: @use 'frontech-library/library/web/abstracts' with($font-path:'public/assets/fonts/');
+/// Variable path by default of the sources defined in the .frontech.json file.
+/// To modify the path, simply set the variable in the import as follows: @use 'frontech-library/library/web/abstracts' with($font-path:'public/assets/fonts/');
 /// @group fonts
 $font-path: 'assets/fonts/' !default;

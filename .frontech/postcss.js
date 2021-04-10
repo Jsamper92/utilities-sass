@@ -12,6 +12,22 @@ const file = `${__dirname.slice(
 )}/library/web/abstracts.scss`;
 
 module.exports.buildCSS = (config) => {
+  const path = () => {
+    const existFolder = config.outputCSS.path.search('/');
+    const file = config.outputCSS.path.match(/([^\/]+$)/);
+    const folder = config.outputCSS.path.slice(0,config.outputCSS.path.length - file[0].length - 1);
+    if(existFolder === 0){
+      return {
+        file: file[0],
+        folder
+      }
+    }else {
+      return {
+        file: file[0],
+        folder: './'
+      }
+    }
+  }
   const transformSass = sass
     .renderSync({
       file,
@@ -22,11 +38,11 @@ module.exports.buildCSS = (config) => {
 
   const buildCSS = postcss([autoprefixer]).process(transformSass).css;
   console.log(
-    `\ncreación output css de las utilidades generadas en base al fichero de configuración`
+    `\nCreation of CSS output of the utilities generated based on the configuration file`
   );
 
   if (config.outputCSS.path.length > 0 ) {
-    fs.writeFile(config.outputCSS.path, buildCSS, () => false);
+    utils.createFile(path().folder,path().file,buildCSS)
     console.log(
       `${symbols.success}  ${process.cwd()}/${config.outputCSS.path}`
     );

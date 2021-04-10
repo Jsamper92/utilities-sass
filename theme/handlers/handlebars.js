@@ -11,4 +11,8 @@ module.exports = {
   isMixin: function (value) {
     return value === 'mixin';
   },
+
+  isCSS: function (value) {
+    return value === 'css';
+  },
 };

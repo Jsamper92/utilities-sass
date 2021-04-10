@@ -1,7 +1,5 @@
 #!/usr/bin/env node
 
-const { Console } = require("console");
-
 const [fs, utils, symbols, webfont, css] = [
   require("fs"),
   require("./.frontech/utils"),
@@ -54,7 +52,7 @@ if (existData) {
           () => true
         );
         console.log(
-          `\ncreación fuente icónica en base a los archivos svg de la ruta ${input}`
+          `\nIconic font creation based on the svg files in the path ${input}`
         );
         file(
           `${__dirname}/library/web/utilities`,
@@ -82,11 +80,12 @@ if (existData) {
           result.woff
         );
         data.outputCSS ? css.buildCSS(data) : null;
-        utils.printMessage("Proceso de creación de settings finalizado");
+        utils.printMessage("Settings creation process finished");
       })
-      .catch(() => {
+      .catch((e) => {
+        console.log(e)
         utils.errorConsole(
-          `\nRevisa el fichero de configuración, has establecido la siguiente información:\n\n${JSON.stringify(
+          `\nCheck the configuration file, you have established the following information:\n\n${JSON.stringify(
             svg,
             null,
             2
@@ -95,7 +94,7 @@ if (existData) {
         utils.createFile(
           `${__dirname}/library/web/utilities`,
           `_icons.scss`,
-          `// Para generar la fuente icónica, revisa el fichero de configuración .frontech.json`
+          `// To generate the iconic font, check the configuration file .frontech.json`
         );
       });
   };
@@ -218,14 +217,14 @@ if (existData) {
               ),`;
         }
 
-        return `/// Mapa creado dinamicamente en base al fichero de configuración. Define los puntos de ruptura de los distintos breakpoints\n/// @type map\n/// @group grid \n$breakpoints: (
+        return `/// Dynamically created map based on the configuration file. Define the breakpoints of the different breakpoints\n/// @type map\n/// @group grid \n$breakpoints: (
                     ${result}
                 );`;
       } catch {
         utils.errorConsole(
-          `${symbols.error}  No se ha especificado ninguna configuración de las utilidades de grid. El archivo se creará sin contenido. Por favor revisa el fichero de configuración .frontech.json.`
+          `${symbols.error}  No grid utility configuration specified. The file will be created without content. Please check the configuration file .frontech.json.`
         );
-        return "// Para generar la configuración de grid, revisa el fichero de configuración .frontech.json\n$breakpoints:()!default;";
+        return "// To generate the grid configuration, check the configuration file .frontech.json\n$breakpoints:()!default;";
       }
     }
   });
@@ -241,15 +240,15 @@ if (existData) {
           layout = value.gutter.attributes.type;
           
           const [width] = [value.width.value];
-          result += `/// Mixin cuyo objetivo es crear la media-query en base a los puntos de corte establecidos en el fichero de configuración\n///\n///\n/// @example scss\n///\n///      .test{\n///         width: 100%;\n///         @include screen-${key}(){\n///           width: auto;\n///         }\n///      }\n///\n/// @example css\n///\n///      .test {\n///         width: 100%;\n///       }\n///\n///      @media only screen and (min-width: ${width}) {\n///         .test {\n///           width: auto;\n///         }\n///      }\n///\n/// @group media-queries \n@mixin screen-${key}{\n   @media only screen and (min-width: ${width}) {\n     @content\n   }\n};\n`;
+          result += `/// Mixin whose objective is to create the media-query based on the cut points established in the configuration file\n///\n///\n/// @example scss\n///\n///      .test{\n///         width: 100%;\n///         @include screen-${key}(){\n///           width: auto;\n///         }\n///      }\n///\n/// @example css\n///\n///      .test {\n///         width: 100%;\n///       }\n///\n///      @media only screen and (min-width: ${width}) {\n///         .test {\n///           width: auto;\n///         }\n///      }\n///\n/// @group media-queries \n@mixin screen-${key}{\n   @media only screen and (min-width: ${width}) {\n     @content\n   }\n};\n`;
         }
 
         return result;
       } catch {
         utils.errorConsole(
-          `${symbols.error}  No se ha especificado ninguna configuración de las utilidades de grid. El archivo se creará sin contenido. Por favor revisa el fichero de configuración .frontech.json.`
+          `${symbols.error}  No grid utility configuration specified. The file will be created without content. Please check the configuration file .frontech.json.`
         );
-        return "// Para generar los mixin de mediaqueries, revisa el fichero de configuración .frontech.json";
+        return "// To generate the mixin of mediaqueries, check the configuration file .frontech.json";
       }
     }
   });
@@ -259,7 +258,7 @@ if (existData) {
       try {
         const { increase, limit } = dictionary.properties.spacing;
 
-        return `/// Mapa creado dinamicamente en base al fichero de configuración. Define los atributos para crear las clases de utilidad de margin y padding\n/// @type number\n/// @group spacing
+        return `/// Dynamically created map based on the configuration file. Define the attributes to create the margin and padding utility classes\n/// @type number\n/// @group spacing
             $spacing: (
                 increase:${increase.value},
                 limit:${limit.value}
@@ -267,9 +266,9 @@ if (existData) {
           `;
       } catch {
         utils.errorConsole(
-          `${symbols.error}  No se ha especificado ninguna configuración de las utilidades de margin y padding. El archivo se creará sin contenido. Por favor revisa el fichero de configuración .frontech.json.`
+          `${symbols.error}  No margin and padding utility settings are specified. The file will be created without content. Please check the configuration file .frontech.json.`
         );
-        return "// Para generar las utilidades de margin y padding, revisa el fichero de configuración .frontech.json\n$spacing:() !default;";
+        return "// To generate the margin and padding utilities, check the configuration file .frontech.json\n$spacing:() !default;";
       }
     }
   });
@@ -283,12 +282,12 @@ if (existData) {
           value = dictionary.properties.color[item];
           customProperties += `--${item}:${value.value};\n`;
         });
-        return `/// Variables de color definida en el archivo .frontech.json\n///@group colors\n:root{${customProperties}};`;
+        return `/// Color variables defined in the .frontech.json file\n///@group colors\n:root{${customProperties}};`;
       } catch {
         utils.errorConsole(
-          `${symbols.error}  No se ha especificado ninguna configuración de colores. El archivo se creará sin contenido. Por favor revisa el fichero de configuración .frontech.json.`
+          `${symbols.error}  No color settings have been specified. The file will be created without content. Please check the configuration file .frontech.json.`
         );
-        return "// Para generar las custom properties de colores, revisa el fichero de configuración .frontech.json";
+        return "// To generate the custom properties of colors, check the configuration file .frontech.json";
       }
     }
   });
@@ -306,12 +305,12 @@ if (existData) {
           fonts += `\n${font}: (\nname:${value.family.value},\nweight:${value.weight.value},\nstyle:${value.style.value}\n),`;
           customProperties += `--${font}:${value.family.value};\n`;
         });
-        return `/// Mapa de fuentes definida en el archivo .frontech.json\n///@group fonts\n$fonts:(${fonts});\n\n/// Custom properties cuyo valor es el nombre aportado en el fichero .frontech.json\n/// @group fonts\n:root{\n${customProperties}};`;
+        return `/// Font map defined in the .frontech.json file\n///@group fonts\n$fonts:(${fonts});\n\n/// Custom properties cuyo valor es el nombre aportado en el fichero .frontech.json\n/// @group fonts\n:root{\n${customProperties}};`;
       } catch (error) {
         utils.errorConsole(
-          `${symbols.error}  No se ha especificado ninguna configuración de tipografias. El archivo se creará sin contenido. Por favor revisa el fichero de configuración .frontech.json.`
+          `${symbols.error}  No font settings have been specified. The file will be created without content. Please check the configuration file .frontech.json.`
         );
-        return "// Para generar la fuentes de texto, revisa el fichero de configuración .frontech.json\n$fonts:() !default;";
+        return "// To generate the text sources, check the configuration file .frontech.json\n$fonts:() !default;";
       }
     }
   });
@@ -331,28 +330,28 @@ if (existData) {
                 output: value.family.output
               })
             : utils.warningConsole(
-                `${symbols.warning}  Revisa el archivo de configuración. Para la creación de la fuente icónica has introducido la ruta origen ${value.family.input} y la ruta de salida ${value.family.output}`
+                `${symbols.warning}  Review the configuration file. For the creation of the iconic source you have entered the source path ${value.family.input} and the exit route ${value.family.output}`
               );
         });
         generateIconFont(icon);
       } catch (error) {
         utils.errorConsole(
-          `${symbols.error}  No se ha especificado ninguna configuración de fuente icónica. El archivo se creará sin contenido. Por favor revisa el fichero de configuración .frontech.json.`
+          `${symbols.error}  No iconic font settings have been specified. The file will be created without content. Please check the configuration file .frontech.json.`
         );
-        return "// Para generar la fuente icónica, revisa el fichero de configuración .frontech.json";
+        return "// To generate the iconic font, check the configuration file .frontech.json";
       }
     }
   });
 
-  utils.printMessage("Proceso de creación de settings iniciado");
+  utils.printMessage("Settings creation process started");
 
   utils.warningConsole(
-    `En base a la información aportada en el fichero de configuración ${fileConfig} se procede a generar los siguientes archivos: \n`
+    `Based on the information provided in the configuration file ${fileConfig} the following files are generated: \n`
   );
 
   StyleDictionary.buildAllPlatforms();
 } else {
   utils.errorConsole(
-    `No se ha especificado ningún archivo de configuración .frontech.json`
+    `No .frontech.json configuration file specified`
   );
 }

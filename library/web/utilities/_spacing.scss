@@ -2,7 +2,7 @@
 @use "sass:string";
 @use '../settings/settings.scss';
 
-/// Mapa que define el prefijo de la clase y propiedad CSS del mixin de margenes y padding
+/// Map that defines the prefix of the CSS class and property of the margins and padding mixin
 /// @type map
 /// @group spacing
 
@@ -17,13 +17,13 @@ $types: (
   pl: padding-left
 );
 
-/// Mixin que partiendo de los puntos de ruptura establecidos en el fichero de configuración, genera las clases del sistema de rejilla.
+/// Mixin that, starting from the breakpoints established in the configuration file, generates the classes of the grid system.
 ///
-/// @argument {map}  $breakpoints [$breakpoints] Mapa establecido en la configuración inicial
-/// @argument {map}  $spacing [$spacing] Mapa establecido en la configuración inicial
-/// @requires $breakpoints Mapa que define los puntos de ruptura, gutter y offset
-/// @requires $spacing Mapa que define el valor exponencial de una clase a la siguiente y el número de estas clases que se van a crear
-/// @requires $types Mapa que define el prefijo de la clase y propiedad CSS del mixin de margenes y padding
+/// @argument {map}  $breakpoints [$breakpoints] Map set in initial setup
+/// @argument {map}  $spacing [$spacing] Map set in initial setup
+/// @requires $breakpoints Map defining break, gutter and offset points
+/// @requires $spacing Map that defines the exponential value from one class to the next and the number of these classes to create
+/// @requires $types Map that defines the prefix of the CSS class and property of the margins and padding mixin
 ///
 /// @example scss
 ///

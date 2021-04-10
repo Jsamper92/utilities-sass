@@ -1,11 +1,11 @@
-/// Mixin cuyo objetivo es partiendo de un string reemplazar un carácter por otro
+/// Mixin whose objective is starting from a string to replace one character with another
 ///
 /// @argument {string} $string
-///   String a modificar.
+///   String to modify.
 /// @argument {string} $search
-///   Carácter a buscar.
+///   Character to look for.
 /// @argument {string}  $replace [""]
-///   Carácter que reemplazara al string establecido.
+///   Character that will replace the established string.
 ///
 /// @example scss
 ///     
@@ -14,11 +14,11 @@
 /// @group functions
 
 @function str-replace($string, $search, $replace: "") {
-	$index: str-index($string, $search);
+$index: str-index($string, $search);
 
-	@if $index {
-		@return string.slice($string, 1, $index - 1) + $replace + string.replace(string.slice($string, $index + str-length($search)), $search, $replace);
-	}
+@if $index {
+	@return string.slice($string, 1, $index - 1) + $replace + string.replace(string.slice($string, $index + str-length($search)), $search, $replace);
+}
 
-	@return $string;
+@return $string;
 }
