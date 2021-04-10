@@ -8,6 +8,7 @@
   },
   "scripts": {
     "start": "sassdoc 'library/web/**/*.scss' && concurrently \"npm run sass:theme-watch\" \"npm run serve\"",
+    "build": "cpx -v \"theme/**/*\" \"./docs/theme\"",
     "serve": "nodemon theme/app.js",
     "sassdoc": "sassdoc2md 'library/web/settings/*.scss' ./README.md -s && sassdoc2md 'library/web/tools/_media-queries.scss' ./README.md -s && node .frontech/readme.js",
     "sass": "sass --no-source-map library/web/abstracts.scss:library/web/abstracts.css",
@@ -26,12 +27,13 @@
     "sassdoc": "^2.7.3"
   },
   "dependencies": {
-    "colors": "^1.4.0",
-    "sass": "^1.32.8",
-    "log-symbols": "^4.0.0",
-    "style-dictionary": "^2.10.2",
-    "webfont": "^9.0.0",
     "autoprefixer": "^10.2.5",
-    "postcss": "^8.2.9"
+    "colors": "^1.4.0",
+    "cpx": "^1.5.0",
+    "log-symbols": "^4.0.0",
+    "postcss": "^8.2.9",
+    "sass": "^1.32.8",
+    "style-dictionary": "^2.10.2",
+    "webfont": "^9.0.0"
   }
 }
