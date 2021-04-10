@@ -53,7 +53,7 @@ if (existData) {
         );
         console.log(
           `\nIconic font creation based on the svg files in the path ${input}`
-        );
+        );  
         file(
           `${__dirname}/library/web/utilities`,
           `_icons.scss`,
