@@ -1,4 +1,4 @@
-name: designSystemsUtils
+name: Deployment
 on:
   push:
     branches:
