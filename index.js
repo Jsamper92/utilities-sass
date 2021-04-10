@@ -50,7 +50,7 @@ if (existData) {
           `${__dirname}/library/web/utilities/utilities.scss`,
           partials,
           () => true
-        );
+        ); 
         console.log(
           `\nIconic font creation based on the svg files in the path ${input}`
         );
