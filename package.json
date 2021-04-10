@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start": "sassdoc 'library/web/**/*.scss' && concurrently \"npm run sass:theme-watch\" \"npm run serve\"",
-    "build": "cpx -v \"theme/**/*\" \"./docs/theme\"",
+    "build": "cpx -v \"theme/**/*\" \"./docs\"",
     "serve": "nodemon theme/app.js",
     "sassdoc": "sassdoc2md 'library/web/settings/*.scss' ./README.md -s && sassdoc2md 'library/web/tools/_media-queries.scss' ./README.md -s && node .frontech/readme.js",
     "sass": "sass --no-source-map library/web/abstracts.scss:library/web/abstracts.css",
