@@ -22,6 +22,6 @@ jobs:
     - name: Deploy to gh-pages
       uses: peaceiris/actions-gh-pages@v3
       with:
-        token: "${{ github.token }}"
+        token: "${{ secrets.ACTION_DEPLOY_KEY }}"
         FOLDER: ./docs 
 
