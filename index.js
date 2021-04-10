@@ -45,7 +45,7 @@ if (existData) {
                 .replace("_", "")
                 .replace(".scss", "")}';\n`)
             : null
-        );
+        ); 
         fs.writeFileSync(
           `${__dirname}/library/web/utilities/utilities.scss`,
           partials,
