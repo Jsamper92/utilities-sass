@@ -24,30 +24,6 @@
         "path": "tools/_animations.scss",
         "name": "_animations.scss"
       }
-    },
-    {
-      "description": "Mixin example of animations\n",
-      "commentRange": {
-        "start": 18,
-        "end": 19
-      },
-      "context": {
-        "type": "mixin",
-        "name": "animation-example-2",
-        "code": "\n    @keyframes animation-example-2 {\n        0%{\n            opacity: 0;\n        }\n\n        100%{\n            opacity: 1;\n        }\n    }\n",
-        "line": {
-          "start": 21,
-          "end": 31
-        }
-      },
-      "group": [
-        "animations"
-      ],
-      "access": "public",
-      "file": {
-        "path": "tools/_animations.scss",
-        "name": "_animations.scss"
-      }
     }
   ],
   "colors": [
