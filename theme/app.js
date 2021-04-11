@@ -5,11 +5,10 @@ const [express, exphbs, sassdoc, fs, path] = [
   require("fs"),
   require("path")
 ];
-const app = express();
-const port = process.env.port | 3000;
 require('dotenv').config();
 
-console.log(process.env.PORT)
+const app = express();
+const port = process.env.port | 3000;
 const publicPath = path.resolve(__dirname, "public");
 
 app.engine(
