@@ -15,6 +15,12 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
+        registry-url: https://npm.pkg.github.com/
+        scope: "@utilities"
+    - run: echo "registry=https://npm.pkg.github.com/@utilities" >> .npmrc
+    - run: npm publish
+      env:
+          NODE_AUTH_TOKEN: ${{secrets._AUTHTOKEN}}
     - name: Install Packages
       run: npm install
     - name: Build page
@@ -23,5 +29,6 @@ jobs:
       uses: peaceiris/actions-gh-pages@v3
       with:
         deploy_key: "${{ secrets.ACTION_DEPLOY_KEY }}"
-        publish_dir: ./docs 
+        publish_dir: ./docs
+        
 

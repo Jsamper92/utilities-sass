@@ -5,14 +5,14 @@ function render(filename, data)
 {
 let docs = {posts:data}
   let source   = fs.readFileSync(filename,'utf8').toString();
-  Handlebars.registerHelper('isMixin',(value,options) => {
+  Handlebars.registerHelper('isMixin',(value) => {
     return value === 'mixin'
   })
-  Handlebars.registerHelper('isDefined',(value,options) => {
+  Handlebars.registerHelper('isDefined',(value) => {
     if (typeof value === "object") return value.length > 0;
     return value !== undefined;
   })
-  Handlebars.registerHelper('isCSS',(value,options) => {
+  Handlebars.registerHelper('isCSS',(value) => {
     return value === 'css';
   })
   let template = Handlebars.compile(source);
