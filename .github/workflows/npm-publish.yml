@@ -17,12 +17,11 @@ jobs:
         node-version: ${{ matrix.node-version }}
         registry-url: https://npm.pkg.github.com/
         scope: "@jsamper92"
-    - run: echo "registry=https://npm.pkg.github.com/@jsamper92" >> .npmrc
-    - run: npm publish
-      env:
-          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
     - name: Install Packages
       run: npm install
+    - run: npm publish
+      env:
+          NPM_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
     - name: Build page
       run: npm run build
     - name: Deploy to gh-pages
