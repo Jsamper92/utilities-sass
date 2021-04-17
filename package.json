@@ -1,5 +1,5 @@
 {
-  "name": "@jsamper92/design-systems-utils",
+  "name": "design-systems-utils",
   "version": "1.0.0",
   "description": "Sass utility library",
   "main": "index.js",
@@ -11,7 +11,7 @@
     "url": "https://github.com/Jsamper92/utilities-sass.git"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/@jsamper92"
+    "registry": "https://npm.pkg.github.com"
   },
   "scripts": {
     "start": "node theme/app.js",
