@@ -1,6 +1,6 @@
 {
   "name": "@jsamper92/utilities-sass",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Sass utility library",
   "main": "index.js",
   "bin": {
