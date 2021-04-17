@@ -1,5 +1,5 @@
 {
-  "name": "design-systems-utils",
+  "name": "@jsamper92/utilities-sass",
   "version": "1.0.0",
   "description": "Sass utility library",
   "main": "index.js",
